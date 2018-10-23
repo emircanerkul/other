@@ -1,0 +1,47 @@
+.container {
+    max-width: 300px;
+    margin: auto;
+    border-top: solid #0FA0CE;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
+    padding: 20px !important;
+    margin-top: 30px !important;
+    background: #FFFFFF30;
+    opacity: .9;
+    transition: background 1s;
+}
+.container>.header>.title{
+    text-align: center;
+    font-family: fantasy;
+    color: #17576b;
+}
+.container>.content>.input>input{
+    display: block;
+    width: 100%;
+    padding: 10px 5px;
+    margin-top: 10px;
+}
+.container>.content>.output{
+    display: none;
+    border: solid thin #b2b2b2;
+    padding: 5px;
+    margin-top: 10px;
+    height: 0;
+    max-height: 200px;
+    overflow-y: scroll;
+    word-wrap: break-word;
+   font-family: monospace;
+   font-size: 12px;
+}
+
+.container>.footer{
+    text-align: center;
+    color: #aaa;
+    font-size: small;
+    margin-top: 30px;
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+     box-sizing: border-box;
+}
