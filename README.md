@@ -1,4 +1,4 @@
-# [Bilimsel Hazırlık Not Hesaplama](https://emircanerkul.github.io/Bilimsel-Hazirlik-Not-Hesaplama/) [![HitCount](http://hits.dwyl.io/emircanerkul/Bilimsel-Hazirlik-Not-Hesaplama.svg)](http://hits.dwyl.io/emircanerkul/Bilimsel-Hazirlik-Not-Hesaplama)
+# [Bilimsel Hazırlık Not Hesaplama](https://emircanerkul.github.io/Bilimsel-Hazirlik-Not-Hesaplama/)
 
 Üniversitelerin bilimsel hazırlık bölümleri için hazırlanan bu uygulama ile başarı durumunuzu kontrol edebilirsiniz.
 
