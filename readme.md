@@ -4,7 +4,7 @@ When I create a new theme that has a fixed or sticky menu, Drupal's default tool
 
 For fixing that problem I developed a chromium extension. With this extension, now I easily use the Drupal gin toolbar with excellent accessibility.
 
-!['Preview']('https://raw.githubusercontent.com/emircanerkul/drupal-gin-toolbar-extension/master/preview.png')
+!['Preview'](https://raw.githubusercontent.com/emircanerkul/drupal-gin-toolbar-extension/master/preview.png)
 
 This module has been tested with https://www.drupal.org/project/gin_toolbar
 
