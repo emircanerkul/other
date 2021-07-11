@@ -1,6 +1,6 @@
 ## Drupal Gin Toolbar Extension
 
-When I create a new theme that has a fixed or sticky menu, Drupal's default toolbar reduces experience due to wrong alignment or element order.
+When I create a new theme that has a fixed or sticky menu, Drupal's default toolbar reduces experience due to wrong alignment and element order.
 
 For fixing that problem I developed a chromium extension. With this extension, now I easily use the Drupal gin toolbar with excellent accessibility.
 
@@ -8,7 +8,8 @@ For fixing that problem I developed a chromium extension. With this extension, n
 
 This module has been tested with https://www.drupal.org/project/gin_toolbar
 
-## My Starter Drupal 9 Modules & Configs that compatible with this chromium extension
+## My Starter Drupal 9 Modules & Configs that compatible with this extension
+
 ***
 #### GIN THEME INSTALL & ENABLE
 * `composer require 'drupal/gin'`
