@@ -10,7 +10,6 @@ This module has been tested with https://www.drupal.org/project/gin_toolbar
 
 ## My Starter Drupal 9 Modules & Configs that compatible with this extension
 
-***
 #### GIN THEME INSTALL & ENABLE
 * `composer require 'drupal/gin'`
 * `drush theme:enable gin`
@@ -44,7 +43,7 @@ This module has been tested with https://www.drupal.org/project/gin_toolbar
 
 #### CLEAR CACHE
 * `drush cr`
-***
+
 
 ## License
 
