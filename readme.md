@@ -1,5 +1,7 @@
 ## Drupal Gin Toolbar Extension
 
+[![Edge badge](https://user-images.githubusercontent.com/11660256/111323589-4f4c7c00-866a-11eb-80ff-da7de777d7c0.png)](https://microsoftedge.microsoft.com/addons/detail/drupal-gin-toolbar-extens/aliagnnlkpcffbpnkcabcmjgohgjcdjg)
+
 When I create a new theme that has a fixed or sticky menu, Drupal's default toolbar reduces experience due to wrong alignment and element order.
 
 For fixing that problem I developed a chromium extension. With this extension, now I easily use the Drupal gin toolbar with excellent accessibility.
