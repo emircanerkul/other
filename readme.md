@@ -10,8 +10,8 @@ Integrating plain HTML to drupal gives all power of drupal to your static websit
 
 #### Startuprr Preview
 
-![Startuprr Preview]()
+![Startuprr Preview](https://raw.githubusercontent.com/emircanerkul/drupal-themes/master/startuprr/screenshot.png)
 
 #### Startuprr Setting Form
 
-![Startuprr Setting Form]()
+![Startuprr Setting Form](https://raw.githubusercontent.com/emircanerkul/drupal-themes/master/startuprr-setting-form.gif)
