@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the startuprr theme.
+ */
+
+use Drupal\file\Entity\File;
+
+/**
+ * Implements hook_preprocess_HOOK() for html.html.twig.
+ */
+function startuprr_preprocess_html(&$variables) {
+  $variables['#attached']['library'][] = 'startuprr/global';
+  $variables['base_path'] = base_path();
+
+  $contactBackgroundID = theme_get_setting('contact_background');
+  if (!empty($contactBackgroundID) && is_array($contactBackgroundID)) {
+    $contactBackground = File::load(theme_get_setting('contact_background')[0]);
+    if (!empty($contactBackground)) {
+      $contactBackground = file_create_url($contactBackground->uri->value);
+      $style = [
+        '#tag' => 'style',
+        '#value' => 'section#contact.map{background-image: url(' . $contactBackground . ');background-size: cover;background-repeat: no-repeat;}}',
+      ];
+      $variables['#attached']['html_head'][] = [$style, 'contact_background'];
+    }
+  }
+
+  $logoUrl = file_url_transform_relative(file_create_url(theme_get_setting('logo.url')));
+  if (!empty($logoUrl)) {
+    $style = [
+      '#tag' => 'style',
+      '#value' => 'header#header .header-row .logo {background-image: url(' . $logoUrl . ');}}',
+    ];
+    $variables['#attached']['html_head'][] = [$style, 'logo_url'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for page.html.twig.
+ */
+function startuprr_preprocess_page(&$variables) {
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ */
+function startuprr_preprocess_node(&$variables) {
+
+}

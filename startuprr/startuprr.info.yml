@@ -1,0 +1,9 @@
+name: Startuprr
+type: theme
+base theme: stable9
+description: Landing Page Theme
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+libraries:
+  - startuprr/global

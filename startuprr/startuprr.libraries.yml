@@ -1,0 +1,10 @@
+# Main theme library.
+global:
+  css:
+    theme:
+      assets/css/main.css: { }
+      assets/font/font-awesome/css/font-awesome.min.css: { minified: true }
+    base:
+      assets/css/reset.css: { }
+  js:
+    assets/js/global.js: {}
