@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "carousel.css",
+	"sources": [
+		"carousel.css"
+	],
+	"sourcesContent": [
+		".paragraph--type--carousel>div{display:flex}\n\n/*# sourceMappingURL=carousel.css.map */"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,0BAA0B,CAAC,GAAG,AAAA,CAAC,OAAO,CAAC,IAAI,CAAE"
+}

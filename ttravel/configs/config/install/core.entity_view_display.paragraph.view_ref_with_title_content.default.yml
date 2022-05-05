@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.view_ref_with_title_content.field_content
+    - field.field.paragraph.view_ref_with_title_content.field_title
+    - field.field.paragraph.view_ref_with_title_content.field_view
+    - paragraphs.paragraphs_type.view_ref_with_title_content
+  module:
+    - text
+    - viewsreference
+id: paragraph.view_ref_with_title_content.default
+targetEntityType: paragraph
+bundle: view_ref_with_title_content
+mode: default
+content:
+  field_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_view:
+    type: viewsreference_formatter
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

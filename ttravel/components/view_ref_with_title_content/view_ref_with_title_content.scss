@@ -1,0 +1,47 @@
+@import "../_global/variables";
+
+section {
+  & .gallery {
+    & .item {
+      &:nth-child(3n+1) {
+        margin-left: 0;
+      }
+
+      position: relative;
+      overflow: hidden;
+      max-height: 250px;
+      margin-top: 30px;
+
+      & > .title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 15px auto;
+        color: white;
+        font-size: 14pt;
+        font-weight: bold;
+        text-align: center;
+        text-shadow: #000000aa 2px 2px 8px;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      & img {
+        display: block;
+        margin: auto;
+
+        height: auto;
+        max-height: 100%;
+
+        width: auto;
+        max-width: 100%;
+        transition: all .3s;
+
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+}

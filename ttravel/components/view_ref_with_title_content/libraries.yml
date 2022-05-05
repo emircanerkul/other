@@ -1,0 +1,4 @@
+view_ref_with_title_content:
+  css:
+    component:
+      view_ref_with_title_content.css: {}

@@ -1,0 +1,4 @@
+call_to_action:
+  css:
+    component:
+      call_to_action.css: {}

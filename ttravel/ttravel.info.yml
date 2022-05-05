@@ -1,0 +1,15 @@
+name: TTravel
+type: theme
+base theme: stable9
+description: Travel theme to demonstrate Component-Based Design System
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+libraries:
+  - ttravel/global
+regions:
+  header: 'Header'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  content: 'Content'
+  footer: 'Footer'

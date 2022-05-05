@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "footer.css",
+	"sources": [
+		"footer.css"
+	],
+	"sourcesContent": [
+		"footer{font-family:'Roboto Medium', sans-serif;color:#4a4a4a;margin-top:50px;font-size:10pt}footer a{text-decoration:none;color:#4a4a4a}footer ul{list-style:none}footer ul li{margin:0}footer ul.share{display:inline-block}footer ul.share li{float:left}footer ul.share li>a{display:block;background-color:#757575;width:24px;height:24px;line-height:24px;text-align:center;margin-right:5px;border-radius:50%;color:#fff}footer ul.share li>a.active{background-color:#fbad27}footer .title{font-family:'Roboto';font-size:12pt;font-weight:bold;margin-bottom:10px}footer .copy{text-align:center;margin-top:10px;padding:10px 0 30px 0;border-top:solid thin #ddd;font-size:8pt}\n\n/*# sourceMappingURL=footer.css.map */"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,MAAM,AAAA,CAAC,WAAW,CAAC,2BAA2B,CAAC,KAAK,CAAC,OAAO,CAAC,UAAU,CAAC,IAAI,CAAC,SAAS,CAAC,IAAI,CAAE,AAAD,AAAA,MAAM,CAAC,CAAC,AAAA,CAAC,eAAe,CAAC,IAAI,CAAC,KAAK,CAAC,OAAO,CAAE,AAAD,AAAA,MAAM,CAAC,EAAE,AAAA,CAAC,UAAU,CAAC,IAAI,CAAE,AAAD,AAAA,MAAM,CAAC,EAAE,CAAC,EAAE,AAAA,CAAC,MAAM,CAAC,CAAC,CAAE,AAAD,AAAA,MAAM,CAAC,EAAE,AAAA,MAAM,AAAA,CAAC,OAAO,CAAC,YAAY,CAAE,AAAD,AAAA,MAAM,CAAC,EAAE,AAAA,MAAM,CAAC,EAAE,AAAA,CAAC,KAAK,CAAC,IAAI,CAAE,AAAD,AAAA,MAAM,CAAC,EAAE,AAAA,MAAM,CAAC,EAAE,CAAC,CAAC,AAAA,CAAC,OAAO,CAAC,KAAK,CAAC,gBAAgB,CAAC,OAAO,CAAC,KAAK,CAAC,IAAI,CAAC,MAAM,CAAC,IAAI,CAAC,WAAW,CAAC,IAAI,CAAC,UAAU,CAAC,MAAM,CAAC,YAAY,CAAC,GAAG,CAAC,aAAa,CAAC,GAAG,CAAC,KAAK,CAAC,IAAI,CAAE,AAAD,AAAA,MAAM,CAAC,EAAE,AAAA,MAAM,CAAC,EAAE,CAAC,CAAC,AAAA,OAAO,AAAA,CAAC,gBAAgB,CAAC,OAAO,CAAE,AAAD,AAAA,MAAM,CAAC,MAAM,AAAA,CAAC,WAAW,CAAC,QAAQ,CAAC,SAAS,CAAC,IAAI,CAAC,WAAW,CAAC,IAAI,CAAC,aAAa,CAAC,IAAI,CAAE,AAAD,AAAA,MAAM,CAAC,KAAK,AAAA,CAAC,UAAU,CAAC,MAAM,CAAC,UAAU,CAAC,IAAI,CAAC,OAAO,CAAC,aAAa,CAAC,UAAU,CAAC,eAAe,CAAC,SAAS,CAAC,GAAG,CAAE"
+}

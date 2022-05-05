@@ -1,0 +1,39 @@
+{{ attach_library('ttravel/footer') }}
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+
+{% if content %}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="two columns">
+                    {{ elements.footer }}
+                </div>
+                <div class="six columns">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d39312.60873887163!2d-73.48337118317721!3d40.77788362317197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1str!2str!4v1649427195935!5m2!1str!2str"  width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="four columns">
+                    <div>Email: <a href="mailto:help@agency.com">help@agency.com</a></div>
+                    <div>Cell: +516-260-0598</div>
+                    <div>Address: 4433 Heavner Court<br> Plainview, New York</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns copy">Copyright@Parag 2016, All Right Reserved</div>
+            </div>
+        </div>
+    </footer>
+
+{% endif %}

@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_with_title.field_content
+    - field.field.paragraph.content_with_title.field_title
+    - paragraphs.paragraphs_type.content_with_title
+  module:
+    - text
+id: paragraph.content_with_title.default
+targetEntityType: paragraph
+bundle: content_with_title
+mode: default
+content:
+  field_content:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

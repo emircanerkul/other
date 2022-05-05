@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_slides
+    - paragraphs.paragraphs_type.carousel
+    - paragraphs.paragraphs_type.content_with_icon
+  module:
+    - entity_reference_revisions
+id: paragraph.carousel.field_slides
+field_name: field_slides
+entity_type: paragraph
+bundle: carousel
+label: Slides
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      content_with_icon: content_with_icon
+    negate: 0
+    target_bundles_drag_drop:
+      call_to_action:
+        weight: 7
+        enabled: false
+      carousel:
+        weight: 8
+        enabled: false
+      content_with_icon:
+        weight: 9
+        enabled: true
+      content_with_title:
+        weight: 10
+        enabled: false
+      spacer:
+        weight: 11
+        enabled: false
+      view_reference:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

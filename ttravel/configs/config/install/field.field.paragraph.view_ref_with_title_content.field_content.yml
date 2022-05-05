@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content
+    - paragraphs.paragraphs_type.view_ref_with_title_content
+  module:
+    - text
+id: paragraph.view_ref_with_title_content.field_content
+field_name: field_content
+entity_type: paragraph
+bundle: view_ref_with_title_content
+label: Content
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

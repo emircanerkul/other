@@ -1,0 +1,50 @@
+{{ attach_library('ttravel/header') }}
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+{% if content %}
+    <div class="container">
+        <div class="row navbar">
+            <div class="nine columns">
+                {{ elements.mainnavigation }}
+
+                <select name="mobile-menu" class="mobile-menu">
+                    <option value="#">Home</option>
+                    <option value="#">Services</option>
+                    <option value="#">About Us</option>
+                    <option value="#">Our Clients</option>
+                    <option value="#">Blog</option>
+                    <option value="#">Contact Us</option>
+                </select>
+            </div>
+
+            <div class="three columns u-pull-right">
+                <div class="phone"><b>Hotline:</b> +512 544 8745</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="title">Fusion Travel</div>
+        </div>
+
+        <div class="row">
+            <div class="sub-title">Lets Discover The World Together</div>
+        </div>
+
+        <div class="row center">
+            <button>Plan Your Trip</button>
+        </div>
+    </div>
+    <div class="watch-intro">Watch<span>Intro Video</span></div>
+{% endif %}

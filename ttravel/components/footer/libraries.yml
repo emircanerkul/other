@@ -1,0 +1,8 @@
+footer:
+  js:
+    footer.js: {}
+  css:
+    component:
+      footer.css: {}
+  dependencies:
+    - core/drupal

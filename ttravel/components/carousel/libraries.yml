@@ -1,0 +1,8 @@
+carousel:
+  js:
+    carousel.js: { }
+  css:
+    component:
+      carousel.css: { }
+  dependencies:
+    - ttravel/slick

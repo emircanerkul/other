@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "call_to_action.css",
+	"sources": [
+		"call_to_action.css"
+	],
+	"sourcesContent": [
+		".paragraph--type--call-to-action{background-color:#fbad27;padding:50px 0}.paragraph--type--call-to-action .title{color:#fff;font-size:22pt;text-align:center;padding:16px 0}\n\n/*# sourceMappingURL=call_to_action.css.map */"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,gCAAgC,AAAA,CAAC,gBAAgB,CAAC,OAAO,CAAC,OAAO,CAAC,MAAM,CAAE,AAAD,AAAA,gCAAgC,CAAC,MAAM,AAAA,CAAC,KAAK,CAAC,IAAI,CAAC,SAAS,CAAC,IAAI,CAAC,UAAU,CAAC,MAAM,CAAC,OAAO,CAAC,MAAM,CAAE"
+}

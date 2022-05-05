@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "button.css",
+	"sources": [
+		"button.css"
+	],
+	"sourcesContent": [
+		"button,.button{transition:all .3s;background-color:#fbad27;border-radius:20px;line-height:36px;padding:0 50px;color:white;border:none;margin:20px auto}button.border,.button.border{border:solid 2px #fff}button:hover,.button:hover{background-color:white;color:#fbad27}\n\n/*# sourceMappingURL=button.css.map */"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,MAAM,CAAC,OAAO,AAAA,CAAC,UAAU,CAAC,OAAO,CAAC,gBAAgB,CAAC,OAAO,CAAC,aAAa,CAAC,IAAI,CAAC,WAAW,CAAC,IAAI,CAAC,OAAO,CAAC,MAAM,CAAC,KAAK,CAAC,KAAK,CAAC,MAAM,CAAC,IAAI,CAAC,MAAM,CAAC,SAAS,CAAE,AAAD,AAAA,MAAM,AAAA,OAAO,CAAC,OAAO,AAAA,OAAO,AAAA,CAAC,MAAM,CAAC,cAAc,CAAE,AAAD,AAAA,MAAM,AAAA,MAAM,CAAC,OAAO,AAAA,MAAM,AAAA,CAAC,gBAAgB,CAAC,KAAK,CAAC,KAAK,CAAC,OAAO,CAAE"
+}

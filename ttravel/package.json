@@ -1,0 +1,15 @@
+{
+  "name": "ttravel",
+  "private": true,
+  "scripts": {
+    "sass-watch": "node-sass --watch --recursive --output-style compressed --output components --source-map true --source-map-contents components",
+    "sass-compile": "node-sass --recursive --output-style compressed --output components --source-map true --source-map-contents components",
+    "livereload": "livereload ./components/* -ee 'twig,scss'",
+    "start": "run-p sass-watch livereload"
+  },
+  "devDependencies": {
+    "livereload": "^0.9.3",
+    "node-sass": "^7.0.1",
+    "npm-run-all": "^4.1.5"
+  }
+}

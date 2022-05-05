@@ -1,0 +1,21 @@
+@import 'variables';
+
+button, .button {
+  transition: all .3s;
+  background-color: $base-color;
+  border-radius: 20px;
+  line-height: 36px;
+  padding: 0 50px;
+  color: white;
+  border: none;
+  margin: 20px auto;
+
+  &.border {
+    border: solid 2px #fff;
+  }
+
+  &:hover {
+    background-color: white;
+    color: $base-color;
+  }
+}

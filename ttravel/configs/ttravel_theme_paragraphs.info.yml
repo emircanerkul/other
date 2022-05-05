@@ -1,0 +1,16 @@
+name: 'TTravel Theme Paragraphs'
+description: 'Paragraph components'
+type: module
+core_version_requirement: '^8.9 || ^9'
+dependencies:
+  - entity_reference_revisions
+  - field
+  - link
+  - node
+  - paragraphs
+  - path
+  - rdf
+  - text
+  - user
+  - viewsreference
+version: 1.0.0

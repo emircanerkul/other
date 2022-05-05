@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "view_ref_with_title_content.css",
+	"sources": [
+		"view_ref_with_title_content.css"
+	],
+	"sourcesContent": [
+		"section .gallery .item{position:relative;overflow:hidden;max-height:250px;margin-top:30px}section .gallery .item:nth-child(3n+1){margin-left:0}section .gallery .item>.title{position:absolute;top:0;left:0;right:0;margin:15px auto;color:white;font-size:14pt;font-weight:bold;text-align:center;text-shadow:#000000aa 2px 2px 8px;z-index:1;pointer-events:none}section .gallery .item img{display:block;margin:auto;height:auto;max-height:100%;width:auto;max-width:100%;transition:all .3s}section .gallery .item img:hover{transform:scale(1.2)}\n\n/*# sourceMappingURL=view_ref_with_title_content.css.map */"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,OAAO,CAAC,QAAQ,CAAC,KAAK,AAAA,CAAC,QAAQ,CAAC,QAAQ,CAAC,QAAQ,CAAC,MAAM,CAAC,UAAU,CAAC,KAAK,CAAC,UAAU,CAAC,IAAI,CAAE,AAAD,AAAA,OAAO,CAAC,QAAQ,CAAC,KAAK,AAAA,UAAW,CAAA,IAAI,CAAC,CAAC,WAAW,CAAC,CAAC,CAAE,AAAD,AAAA,OAAO,CAAC,QAAQ,CAAC,KAAK,CAAC,MAAM,AAAA,CAAC,QAAQ,CAAC,QAAQ,CAAC,GAAG,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,CAAC,KAAK,CAAC,CAAC,CAAC,MAAM,CAAC,SAAS,CAAC,KAAK,CAAC,KAAK,CAAC,SAAS,CAAC,IAAI,CAAC,WAAW,CAAC,IAAI,CAAC,UAAU,CAAC,MAAM,CAAC,WAAW,CAAC,qBAAqB,CAAC,OAAO,CAAC,CAAC,CAAC,cAAc,CAAC,IAAI,CAAE,AAAD,AAAA,OAAO,CAAC,QAAQ,CAAC,KAAK,CAAC,GAAG,AAAA,CAAC,OAAO,CAAC,KAAK,CAAC,MAAM,CAAC,IAAI,CAAC,MAAM,CAAC,IAAI,CAAC,UAAU,CAAC,IAAI,CAAC,KAAK,CAAC,IAAI,CAAC,SAAS,CAAC,IAAI,CAAC,UAAU,CAAC,OAAO,CAAE,AAAD,AAAA,OAAO,CAAC,QAAQ,CAAC,KAAK,CAAC,GAAG,AAAA,MAAM,AAAA,CAAC,SAAS,CAAC,UAAU,CAAE"
+}

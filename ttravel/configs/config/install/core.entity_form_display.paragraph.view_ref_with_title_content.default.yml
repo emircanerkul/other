@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.view_ref_with_title_content.field_content
+    - field.field.paragraph.view_ref_with_title_content.field_title
+    - field.field.paragraph.view_ref_with_title_content.field_view
+    - paragraphs.paragraphs_type.view_ref_with_title_content
+  module:
+    - text
+    - viewsreference
+id: paragraph.view_ref_with_title_content.default
+targetEntityType: paragraph
+bundle: view_ref_with_title_content
+mode: default
+content:
+  field_content:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_view:
+    type: viewsreference_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,58 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_components
+    - node.type.page
+    - paragraphs.paragraphs_type.call_to_action
+    - paragraphs.paragraphs_type.carousel
+    - paragraphs.paragraphs_type.content_with_title
+    - paragraphs.paragraphs_type.spacer
+    - paragraphs.paragraphs_type.view_ref_with_title_content
+    - paragraphs.paragraphs_type.view_reference
+  module:
+    - entity_reference_revisions
+id: node.page.field_components
+field_name: field_components
+entity_type: node
+bundle: page
+label: Components
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      content_with_title: content_with_title
+      view_reference: view_reference
+      call_to_action: call_to_action
+      carousel: carousel
+      spacer: spacer
+      view_ref_with_title_content: view_ref_with_title_content
+    negate: 0
+    target_bundles_drag_drop:
+      call_to_action:
+        weight: 7
+        enabled: true
+      carousel:
+        weight: 8
+        enabled: true
+      content_with_icon:
+        weight: 9
+        enabled: false
+      content_with_title:
+        weight: 2
+        enabled: true
+      spacer:
+        weight: 11
+        enabled: true
+      view_ref_with_title_content:
+        weight: 14
+        enabled: true
+      view_reference:
+        weight: 4
+        enabled: true
+field_type: entity_reference_revisions

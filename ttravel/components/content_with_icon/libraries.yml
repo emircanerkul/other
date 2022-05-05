@@ -1,0 +1,4 @@
+content_with_icon:
+  css:
+    component:
+      content_with_icon.css: {}
