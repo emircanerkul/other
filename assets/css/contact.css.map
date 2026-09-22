@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "contact.css",
+	"sources": [
+		"../sass/contact.scss",
+		"../sass/_variables.scss"
+	],
+	"sourcesContent": [
+		"@import \"variables\";\n\ninput,\nselect,\ntextarea {\n    box-sizing: border-box;\n    width: 100%;\n    padding: 12px;\n    border: 1px solid #ccc;\n    margin-top: 6px;\n    margin-bottom: 16px;\n    resize: vertical;\n}\n\ninput[type=\"submit\"] {\n    background-color: $color_secondary;\n    color: #fff;\n    padding: 12px 20px;\n    border: none;\n    cursor: pointer;\n}\n\ninput[type=\"submit\"]:hover {\n    background-color: darken($color_secondary, 20);\n}\n\n@media screen and (max-width: 600px) {\n    .column,\n    input[type=\"submit\"] {\n        width: 100%;\n        margin-top: 0;\n    }\n}\n",
+		"$color_primary: #583d72;\n$color_secondary: #ff8e71;\n"
+	],
+	"names": [],
+	"mappings": "AAEA,AAAA,KAAK,CACL,MAAM,CACN,QAAQ,AAAC,CACL,UAAU,CAAE,UAAU,CACtB,KAAK,CAAE,IAAI,CACX,OAAO,CAAE,IAAI,CACb,MAAM,CAAE,cAAc,CACtB,UAAU,CAAE,GAAG,CACf,aAAa,CAAE,IAAI,CACnB,MAAM,CAAE,QAAQ,CACnB,AAED,AAAA,KAAK,CAAA,AAAA,IAAC,CAAK,QAAQ,AAAb,CAAe,CACjB,gBAAgB,CCdF,OAAO,CDerB,KAAK,CAAE,IAAI,CACX,OAAO,CAAE,SAAS,CAClB,MAAM,CAAE,IAAI,CACZ,MAAM,CAAE,OAAO,CAClB,AAED,AAAA,KAAK,CAAA,AAAA,IAAC,CAAK,QAAQ,AAAb,CAAc,MAAM,AAAC,CACvB,gBAAgB,CAAE,OAA4B,CACjD,AAED,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK,EAC/B,AAAA,OAAO,CACP,KAAK,CAAA,AAAA,IAAC,CAAK,QAAQ,AAAb,CAAe,CACjB,KAAK,CAAE,IAAI,CACX,UAAU,CAAE,CAAC,CAChB"
+}

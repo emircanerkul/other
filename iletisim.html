@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobilerim | Emircan ERKUL</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/form.css">
+</head>
+<body>
+    <div id="particles"></div>
+    <div id="up">⇑</div>
+
+    <div class="container">
+        <iframe id="header" width="100%" height="100%" src="header.html"
+            frameborder="0"></iframe>
+        <article>
+            <div class="two-col">
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12077.2142500472!2d29.919569532788092!3d40.82129546722311!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc81fa849234e8755!2sKocaeli%20%C3%9Cniversitesi!5e0!3m2!1str!2str!4v1607804929269!5m2!1str!2str" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+                <div>
+                    <form action="mailto:contact@emircanerkul.com">
+                        <label for="fname">Ad</label>
+                        <input id="fname" name="fname" type="text" required>
+                        <label for="lname">Soyad</label>
+                        <input id="lname" name="lname" type="text" required>
+                        <label for="bdate">Doğum Tarihi</label>
+                        <input id="bdate" name="bdate" type="date" required>
+                        <label for="phone">Telefon</label>
+                        <input id="phone" name="phone" placeholder="5555550000" type="tel" max="10" min="10" required>
+                        <label for="mail">Mail</label>
+                        <input id="mail" name="mail" type="email" required>
+                        <label for="message">Mesaj</label>
+                        <textarea id="message" name="message" placeholder="Mesajınız" rows="5" maxlength="120" required></textarea>
+                        <input type="submit" value="Submit">
+                    </form>
+
+                </div>
+            </div>
+            <p>
+                Etiam euismod vel lorem ut malesuada. Nunc congue maximus accumsan. Proin mi
+                erat, tincidunt vitae elementum eu, consectetur ut urna. Suspendisse lobortis in
+                nisi id blandit. Sed ornare nisl a sodales hendrerit. Suspendisse varius lacus
+                at mi aliquet commodo. Duis vehicula id neque at mattis. Ut sollicitudin ipsum
+                nec metus pharetra molestie. Praesent pharetra vitae odio at ultrices. Proin
+                feugiat facilisis ligula, et congue tortor vulputate a. Pellentesque volutpat
+                ullamcorper porta. Nullam dictum lorem in diam blandit ultrices.
+            </p>
+            <p>
+                Integer sed facilisis augue. Nam a porta magna. Donec gravida
+                tincidunt lorem,
+                ut scelerisque lectus aliquet a. Nam ac placerat lacus, sed
+                aliquam magna. Sed
+                tincidunt dui erat, et dapibus leo congue eu. Phasellus
+                facilisis aliquet
+                pulvinar. Mauris sit amet massa non turpis interdum tempus vel
+                et dolor. In hac
+                habitasse platea dictumst. Mauris dapibus sapien quis volutpat
+                tincidunt. Nulla
+                rutrum ante leo, eu malesuada ligula placerat sed. Vivamus non
+                risus maximus,
+                interdum lorem sit amet, mattis arcu. Etiam eget nulla et turpis
+                mattis
+                accumsan. Nunc ultrices velit eget tortor condimentum, eu
+                ullamcorper velit
+                venenatis.
+            </p>
+        </article>
+        <iframe id="footer" width="100%" height="100%" src="footer.html"
+            frameborder="0"></iframe>
+    </div>
+    <script src="assets/js/jquery-3.5.1.js"></script>
+    <script src="assets/js/particles.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        $( "form" ).submit(function( event ) {
+            let fname = $("#fname").val();
+            let lname = $("#lname").val();
+            let bdate = $("#bdate").val();
+            let phone = $("#phone").val();
+            let mail = $("#mail").val();
+            let message = $("#message").val();
+
+            window.location = $("form").attr("action") + '?subject=' + fname+" "+ lname + '&body=' + message +"%0d%0a%0d%0aDoğum Tarihi: "+ bdate + "%0d%0aTelefon: "+ phone + "%0d%0aEposta: "+ mail ;
+            event.preventDefault();
+        });
+    </script>
+</body>
+
+</html>
