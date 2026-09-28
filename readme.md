@@ -7,11 +7,11 @@ recording.
 
 | Piece | Code | Listen | SoundCloud |
 | :--- | :---: | :---: | :---: |
-| **Almost Done** | [almost_done.py](pieces/almost_done.py) | [mp3](audio/almost_done.mp3?raw=true) · [ogg](audio/almost_done.ogg?raw=true) | [listen](https://soundcloud.com/emircanerkul/almost-done) |
-| **Insist** | [insist.py](pieces/insist.py) | [mp3](audio/insist.mp3?raw=true) · [ogg](audio/insist.ogg?raw=true) | [listen](https://soundcloud.com/emircanerkul/insist) |
+| **Almost Done** | [almost_done.py](pieces/almost_done.py) | [mp3](audio/almost_done.mp3?raw=true) | [listen](https://soundcloud.com/emircanerkul/almost-done) |
+| **Insist** | [insist.py](pieces/insist.py) | [mp3](audio/insist.mp3?raw=true) | [listen](https://soundcloud.com/emircanerkul/insist) |
 
-16 bars / 32 s each, 120 BPM in 4/4. The WAV masters are `gitignore`d — they are
-regenerated in a minute.
+16 bars / 32 s each, 120 BPM in 4/4, MP3 at 96 kbps. The WAV masters are
+`gitignore`d — they are regenerated in a minute.
 
 ### Can a README play audio?
 
@@ -31,20 +31,6 @@ The one thing that does play inline:
 `audio/*.mp4` are audio-only AAC (no video track), so you get sound with a blank
 frame. `./render.sh` produces them by default.
 
-### Web player
-
-[`www/index.html`](www/index.html) is a real player page: `<audio controls>`, a
-playlist, track switching and the FoxDot source of each piece, with no
-dependencies. Serve the folder and open it:
-
-```bash
-python3 -m http.server -d www 8000    # then open http://localhost:8000
-```
-
-It is wired to this repo's Pages aggregator (the `www/` convention), so switching
-the branch from `archive` to `static` in `scratch/sites.json` on `main` publishes
-it under `/foxdot-music-synthesis/`. Pages is not enabled for this repo yet.
-
 ### Render it yourself
 
 ```bash
@@ -54,7 +40,7 @@ it under `/foxdot-music-synthesis/`. Pages is not enabled for this repo yet.
 
 Docker only — the image bundles SuperCollider and JACK's dummy driver, which is a
 real-time paced virtual sound card. Useful flags: `--bars` (default 16),
-`--fade-out`, `--mp3-bitrate` (default `96k`), `--formats` (`wav,mp3,ogg,mp4`).
+`--fade-out`, `--mp3-bitrate` (default `96k`), `--formats` (`wav,mp3,mp4`).
 See [render.py](render.py).
 
 ### Spacial Thanks For
