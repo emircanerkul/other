@@ -290,10 +290,18 @@ def start_jack(sample_rate: int, block_size: int, log_path: str):
     return proc
 
 
-def start_sclang(root: str, startup_scd: str, log_path: str, ready_path: str):
-    """Boot sclang with the generated startup file and wait for FOXDOT_READY."""
-    if os.path.exists(ready_path):
-        os.remove(ready_path)
+def start_sclang(root: str, startup_scd: str, log_path: str, ready_path: str,
+                 done_path: str = None):
+    """Boot sclang with the generated startup file and wait for FOXDOT_READY.
+
+    Both marker files are cleared first.  A leftover `recorded` from a previous
+    render into the same --workdir would make the caller believe the recording
+    was already finished, so it would tear the engine down mid-take and ship a
+    truncated file.
+    """
+    for path in (ready_path, done_path):
+        if path and os.path.exists(path):
+            os.remove(path)
 
     env = dict(os.environ)
     # sclang is a Qt app: run it without an X server.
@@ -392,6 +400,25 @@ def run(cmd, what):
     return res
 
 
+def find_first_sound(src: str, threshold_db: float = -50.0) -> float:
+    """Return the time of the first non-silent moment in `src`.
+
+    FoxDot's Clock schedules every player's start on the next *bar* boundary, so
+    a piece that is evaluated mid-bar is silent for up to a bar before the first
+    note lands - about two seconds at the default tempo.  Trimming from the
+    lead-in instead of from the first note shipped 32 s files that were 2.25 s
+    of silence followed by 30 s of music.
+    """
+    res = subprocess.run(
+        ["ffmpeg", "-hide_banner", "-i", src,
+         "-af", "silencedetect=noise=%.0fdB:d=0.02" % threshold_db,
+         "-f", "null", "-"],
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    m = re.search(r"silence_end:\s*([0-9.]+)",
+                  res.stdout.decode("utf-8", "replace"))
+    return float(m.group(1)) if m else 0.0
+
+
 def encode(src: str, dest: str, duration: float, fade_out: float, offset: float,
            extra) -> None:
     """Trim to `duration` starting at `offset`, fade the ends, then encode."""
@@ -472,7 +499,9 @@ def main() -> int:
 
     # The recorder runs for the piece plus a little slack, so the release tail
     # of the last note is captured too.
-    play_seconds = duration + 3.0
+    # The recorder has to cover the bar-alignment gap (up to a bar of silence
+    # before the first note) plus the piece itself plus the release tail.
+    play_seconds = duration + 8.0
     raw_wav = os.path.join(work, "%s.raw.wav" % name)
 
     build_buffers_scd(root, buffers_scd)
@@ -484,7 +513,8 @@ def main() -> int:
     jack = start_jack(args.samplerate, args.blocksize, jack_log)
     sclang = None
     try:
-        sclang = start_sclang(root, startup_scd, sclang_log, ready_marker)
+        sclang = start_sclang(root, startup_scd, sclang_log, ready_marker,
+                              done_marker)
 
         # The Routine arms the recorder right before dropping the marker, so
         # waiting for the recording file is waiting for "the clock is running".
@@ -540,11 +570,16 @@ def main() -> int:
     # ---- post-process ------------------------------------------------------ #
     # The trimmed/faded file is the deliverable when .wav was requested,
     # otherwise it is only an intermediate that feeds the lossy encoders.
-    # The recording started `lead_in` seconds before the piece did, so the trim
-    # starts there; that is also where the fade-in lands.
+    # The recording started `lead_in` seconds before the piece did, and the
+    # piece itself had to wait for the next bar, so the trim starts at the first
+    # detected sound; that is also where the fade-in lands.
     wav_path = os.path.join(out_dir, "%s.wav" % name) if "wav" in formats \
         else os.path.join(work, "%s.trimmed.wav" % name)
-    encode(raw_wav, wav_path, duration, args.fade_out, lead_in,
+    # Trim from where the music actually starts, not from where the render did.
+    first_sound = find_first_sound(raw_wav)
+    log("first sound at %.3f s (piece evaluated %.3f s after the recorder armed)"
+        % (first_sound, lead_in))
+    encode(raw_wav, wav_path, duration, args.fade_out, first_sound,
            ["-c:a", "pcm_s%dle" % args.bits])
 
     tags = ["-metadata", "title=%s" % name,

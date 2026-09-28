@@ -8,6 +8,7 @@ rendered headlessly in Docker — no sound card involved.
 | :--- | :---: | :---: | :---: |
 | **Almost Done** | [almost_done.py](pieces/almost_done.py) | [webm](audio/almost_done.webm?raw=true) · [mp3](audio/almost_done.mp3?raw=true) | [listen](https://soundcloud.com/emircanerkul/almost-done) |
 | **Insist** | [insist.py](pieces/insist.py) | [webm](audio/insist.webm?raw=true) · [mp3](audio/insist.mp3?raw=true) | [listen](https://soundcloud.com/emircanerkul/insist) |
+| **Stepfun5 AI's Taste** | [stepfun5_ais_taste.py](pieces/stepfun5_ais_taste.py) | [webm](audio/stepfun5_ais_taste.webm?raw=true) · [mp3](audio/stepfun5_ais_taste.mp3?raw=true) | [listen](https://soundcloud.com/emircanerkul/almost-done) |
 
 16 bars / 32 s each, 120 BPM in 4/4. The webm links play in the browser; the mp3s
 are there for older ones. WAV masters are regenerated, not committed.
