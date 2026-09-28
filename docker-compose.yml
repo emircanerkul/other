@@ -1,0 +1,36 @@
+version: "3.8"
+
+# Containerized build for this old Flutter project — nothing is installed on
+# the host. The `flutter` service uses a locally built arm64-native image
+# (see deploy/Dockerfile and deploy/README.md for why).
+#
+# IMPORTANT: containers are ephemeral — packages downloaded by `flutter pub get`
+# disappear with the container, so pub get and build must run in the SAME
+# container invocation.
+
+services:
+  flutter:
+    image: wallpaper-flutter:3.7.7-arm64
+    working_dir: /app
+    entrypoint: /app/deploy/flutter-entrypoint.sh
+    command: bash
+    volumes:
+      - .:/app
+    environment:
+      - FLUTTER_SUPPRESS_ANALYTICS=true
+      # Optional Pexels API key (lib/data/data.dart ships a placeholder):
+      #   PEXELS_API_KEY=xxx docker compose run --rm flutter bash -lc "flutter build web --release --dart-define=PEXELS_API_KEY=\$PEXELS_API_KEY"
+      - PEXELS_API_KEY=${PEXELS_API_KEY:-}
+
+  # Static web server for the built app.
+  # Usage:
+  #   source container-env.sh
+  #   docker compose run --rm flutter bash -lc "flutter pub get && flutter build web --release"
+  #   docker compose up -d web    # then open http://localhost:8080
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./build/web:/usr/share/nginx/html:ro
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
