@@ -58,12 +58,12 @@ class CVGen
         $template = $this->compile_arrays($template, $profile);
         $template = $this->compile_variables($template, $profile, $privacy, $color);
 
-        return preg_replace("/\I(|%)=(.*?)\=(|%)I/", "", $template);
+        return preg_replace("/I(|%)=(.*?)=(|%)I/", "", $template);
     }
 
     private function compile_variables($template, $profile, $privacy, $color)
     {
-        preg_match_all("/\I%=(.*?)\=%I/", $template, $variables);
+        preg_match_all("/I%=(.*?)=%I/", $template, $variables);
 
         foreach ($variables[0] as $key => $value) {
             if ($variables[1][$key] == "color")
@@ -92,7 +92,7 @@ class CVGen
 
                 foreach ($gauss_template[0] as $gauss_key => $gauss_value) {
                     $gauss_value_first = $gauss_value;
-                    preg_match_all("/\I%=(.*?)\=%I/", $gauss_value, $gauss_variables);
+                    preg_match_all("/I%=(.*?)=%I/", $gauss_value, $gauss_variables);
                     foreach ($gauss_variables[0] as $k => $v) {
                         $gauss_value = str_replace($v, $profile->{$array_key}[$gauss_key]->{$gauss_variables[1][$k]}, $gauss_value);
                     }
@@ -107,7 +107,7 @@ class CVGen
     {
         $translations = $this->get_translations();
 
-        preg_match_all("/\I&=(.*?)\=&I/", $template, $variables);
+        preg_match_all("/I&=(.*?)=&I/", $template, $variables);
         foreach ($variables[0] as $key => $value)
             $template = str_replace($value, $translations->$lang->{$variables[1][$key]}, $template);
         return $template;
