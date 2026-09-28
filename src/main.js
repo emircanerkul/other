@@ -29,6 +29,12 @@ function alertFailed(error) {
 async function init() {
   await initDB();
   setupDropzone();
+
+  // Restore dashboard if data was persisted by a previous import
+  const savedSheets = await getSheetNames();
+  if (savedSheets.length > 0) {
+    await displayData();
+  }
 }
 
 // Setup file dropzone
@@ -134,6 +140,9 @@ function dateToTimestamp(value) {
 async function displayData() {
   const sheetNames = await getSheetNames();
   if (sheetNames.length === 0) return;
+
+  // Reveal the dashboard now that there is data to show
+  document.getElementById('dashboard').hidden = false;
 
   const sheetName = sheetNames[0];
   const data = await getSheetData(sheetName);

@@ -75,19 +75,22 @@
       </div>
       <div class="content">
         <div id="upload"><div id="upload-box">Drop an XLSX File Here</div></div>
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6"><div class="card card-stats"><div class="row"><div class="icon-big text-success"><i class="fas fa-file-alt"></i></div><div class="numbers"><p class="card-category">ongoing</p><p id="number-of-ongoing-project" class="card-title"></p></div></div></div></div>
-          <div class="col-lg-3 col-md-6 col-sm-6"><div class="card card-stats"><div class="row"><div class="icon-big text-warning"><i class="fas fa-file-alt"></i></div><div class="numbers"><p class="card-category">delayed</p><p id="number-of-delayed-project" class="card-title"></p></div></div></div></div>
-          <div class="col-lg-3 col-md-6 col-sm-6"><div class="card card-stats"><div class="row"><div class="icon-big text-danger"><i class="fas fa-file-alt"></i></div><div class="numbers"><p class="card-category">cancelled</p><p id="number-of-cancelled-project" class="card-title"></p></div></div></div></div>
-          <div class="col-lg-3 col-md-6 col-sm-6"><div class="card card-stats"><div class="row"><div class="icon-big text-primary"><i class="fas fa-file-alt"></i></div><div class="numbers"><p class="card-category">completed</p><p id="number-of-completed-project" class="card-title"></p><select id="completed-months" style="margin-top:6px;border:1px solid #ddd;border-radius:4px;padding:4px;font-size:.8rem;"><option value="1">Within 1 month</option><option value="2">Within 2 month</option><option value="3">Within 3 month</option><option value="4">Within 4 month</option><option value="5">Within 5 month</option><option value="6" selected>Within 6 month</option><option value="7">Within 7 month</option><option value="8">Within 8 month</option><option value="9">Within 9 month</option><option value="10">Within 10 month</option><option value="11">Within 11 month</option><option value="12">Within 12 month</option><option value="24">Within 24 month</option><option value="48">Within 48 month</option></select></div></div></div></div>
-        </div>
-        <div class="row">
-          <div class="col-md-12"><div class="card"><table id="projects"></table></div></div>
-        </div>
-        <div class="row">
-          <div class="col-md-4"><div class="card"><h5 class="card-title">Project Count</h5><p class="card-category">Number of projects per engineer</p><div class="chart-container"><canvas id="number-of-projects-per-engineer"></canvas></div></div></div>
-          <div class="col-md-4"><div class="card"><h5 class="card-title">Project Value</h5><p class="card-category">Individual engineer project value</p><div class="chart-container"><canvas id="individual-engineer-project-value"></canvas></div></div></div>
-          <div class="col-md-4"><div class="card"><h5 class="card-title">Starting Speed</h5><p class="card-category">Time to start a project</p><div class="chart-container"><canvas id="quick-engineers"></canvas></div></div></div>
+
+        <div id="dashboard" hidden>
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6"><div class="card card-stats"><div class="row"><div class="icon-big text-success"><i class="fas fa-file-alt"></i></div><div class="numbers"><p class="card-category">ongoing</p><p id="number-of-ongoing-project" class="card-title"></p></div></div></div></div>
+            <div class="col-lg-3 col-md-6 col-sm-6"><div class="card card-stats"><div class="row"><div class="icon-big text-warning"><i class="fas fa-file-alt"></i></div><div class="numbers"><p class="card-category">delayed</p><p id="number-of-delayed-project" class="card-title"></p></div></div></div></div>
+            <div class="col-lg-3 col-md-6 col-sm-6"><div class="card card-stats"><div class="row"><div class="icon-big text-danger"><i class="fas fa-file-alt"></i></div><div class="numbers"><p class="card-category">cancelled</p><p id="number-of-cancelled-project" class="card-title"></p></div></div></div></div>
+            <div class="col-lg-3 col-md-6 col-sm-6"><div class="card card-stats"><div class="row"><div class="icon-big text-primary"><i class="fas fa-file-alt"></i></div><div class="numbers"><p class="card-category">completed</p><p id="number-of-completed-project" class="card-title"></p><select id="completed-months" style="margin-top:6px;border:1px solid #ddd;border-radius:4px;padding:4px;font-size:.8rem;"><option value="1">Within 1 month</option><option value="2">Within 2 month</option><option value="3">Within 3 month</option><option value="4">Within 4 month</option><option value="5">Within 5 month</option><option value="6" selected>Within 6 month</option><option value="7">Within 7 month</option><option value="8">Within 8 month</option><option value="9">Within 9 month</option><option value="10">Within 10 month</option><option value="11">Within 11 month</option><option value="12">Within 12 month</option><option value="24">Within 24 month</option><option value="48">Within 48 month</option></select></div></div></div></div>
+          </div>
+          <div class="row">
+            <div class="col-md-12"><div class="card"><table id="projects"></table></div></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4"><div class="card"><h5 class="card-title">Project Count</h5><p class="card-category">Number of projects per engineer</p><div class="chart-container"><canvas id="number-of-projects-per-engineer"></canvas></div></div></div>
+            <div class="col-md-4"><div class="card"><h5 class="card-title">Project Value</h5><p class="card-category">Individual engineer project value</p><div class="chart-container"><canvas id="individual-engineer-project-value"></canvas></div></div></div>
+            <div class="col-md-4"><div class="card"><h5 class="card-title">Starting Speed</h5><p class="card-category">Time to start a project</p><div class="chart-container"><canvas id="quick-engineers"></canvas></div></div></div>
+          </div>
         </div>
       </div>
     </div>
