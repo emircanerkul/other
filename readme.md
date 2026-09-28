@@ -2,7 +2,7 @@
 
 We don't need keep running server. We can read xlsx file and create database on client side. This project about spreadsheet visualization.
 
-![Preview](https://raw.githubusercontent.com/emircanerkul/data-visualization/master/preview.png)
+![Preview](https://raw.githubusercontent.com/emircanerkul/other/project/data-visualization/preview.webp)
 
 #### [Click](https://emircanerkul.github.io/data-visualization/) for Online Preview
 
