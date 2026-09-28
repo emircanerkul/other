@@ -427,10 +427,9 @@ def main() -> int:
     ap.add_argument("--bits", type=int, default=DEFAULT_BITS, choices=[16, 24, 32])
     ap.add_argument("--fade-out", type=float, default=2.0,
                     help="length of the fade-out at the end, in seconds")
-    ap.add_argument("--formats", default="wav,mp3,ogg,mp4",
-                    help="comma separated subset of wav,mp3,ogg,mp4. mp4 is an "
-                         "audio-only AAC file - the only one of these that can be "
-                         "embedded in a GitHub README, and only as an attachment")
+    ap.add_argument("--formats", default="wav,mp3,webm",
+                    help="comma separated subset of wav,mp3,webm. webm is the one "
+                         "that plays inline from a README link (served as video/webm)")
     ap.add_argument("--mp3-bitrate", default=DEFAULT_MP3_BITRATE,
                     help="MP3 bitrate, e.g. 96k, 128k, 192k (default %(default)s)")
     ap.add_argument("--keep-raw", action="store_true",
@@ -563,12 +562,15 @@ def main() -> int:
                args.fade_out, 0.0,
                ["-c:a", "libvorbis", "-q:a", "5"] + tags)
 
-    if "mp4" in formats:
-        # Audio-only MP4: this is the one format that can be embedded in a
-        # GitHub README, but only as an *attachment* (see the readme).
-        encode(wav_path, os.path.join(out_dir, "%s.mp4" % name), duration,
+    if "webm" in formats:
+        # Audio-only WebM/Opus.  This is the format to link to from a README:
+        # raw.githubusercontent.com serves .webm as video/webm, which browsers
+        # hand to their built-in player, so the link *plays* instead of
+        # downloading.  (A .mp4 in the same place comes back as
+        # application/octet-stream, which browsers only ever download.)
+        encode(wav_path, os.path.join(out_dir, "%s.webm" % name), duration,
                args.fade_out, 0.0,
-               ["-vn", "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart"] + tags)
+               ["-vn", "-c:a", "libopus", "-b:a", args.mp3_bitrate] + tags)
 
     if "wav" not in formats:
         os.remove(wav_path)

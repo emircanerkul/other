@@ -7,29 +7,32 @@ recording.
 
 | Piece | Code | Listen | SoundCloud |
 | :--- | :---: | :---: | :---: |
-| **Almost Done** | [almost_done.py](pieces/almost_done.py) | [mp3](audio/almost_done.mp3?raw=true) | [listen](https://soundcloud.com/emircanerkul/almost-done) |
-| **Insist** | [insist.py](pieces/insist.py) | [mp3](audio/insist.mp3?raw=true) | [listen](https://soundcloud.com/emircanerkul/insist) |
+| **Almost Done** | [almost_done.py](pieces/almost_done.py) | [listen](audio/almost_done.webm?raw=true) · [mp3](audio/almost_done.mp3?raw=true) | [listen](https://soundcloud.com/emircanerkul/almost-done) |
+| **Insist** | [insist.py](pieces/insist.py) | [listen](audio/insist.webm?raw=true) · [mp3](audio/insist.mp3?raw=true) | [listen](https://soundcloud.com/emircanerkul/insist) |
 
-16 bars / 32 s each, 120 BPM in 4/4, MP3 at 96 kbps. The WAV masters are
-`gitignore`d — they are regenerated in a minute.
+16 bars / 32 s each, 120 BPM in 4/4. The WAV masters are `gitignore`d — they are
+regenerated in a minute.
 
-### Can a README play audio?
+**Open the `listen` link and it plays in the browser.** That is the WebM talking:
+`raw.githubusercontent.com` serves `.webm` as `video/webm`, which every browser
+hands to its built-in player. The `.mp3` next to it is the fallback for anything
+older — GitHub serves it as `audio/mpeg`, which Firefox and Safari play inline
+but Chrome downloads.
 
-**No.** GitHub strips `<audio>` from Markdown, and strips `src` from `<video>`
-too — its allowlist allows `source` with only `srcset`. Video works only because
-GitHub runs a private superset of that list, and even then only for files
-**uploaded as attachments**: a bare link or a `<video>` tag pointing at a file in
-the repo renders as a plain link. Verified against this repository, not just the
-docs.
+### Can a README embed a player?
 
-The one thing that does play inline:
+No, and it is worth being precise about why, because "just use an audio tag" is
+the wrong answer twice over:
 
-1. Drag `audio/<piece>.mp4` into any issue comment box — it uploads and returns a
-   `github.com/user-attachments/assets/...` URL.
-2. Paste that URL on its own line in the README — GitHub embeds a player.
+* GitHub strips `<audio>` from Markdown, and strips `src` from `<video>` too —
+  its allowlist allows `source` with only `srcset`.
+* GitHub *does* support video, but only for files **uploaded as attachments**. A
+  `<video>` tag or a bare link pointing at a file in the repo renders as a plain
+  link. (An `.mp4` in the repo comes back as `application/octet-stream`, so even a
+  browser that gets that far only downloads it.)
 
-`audio/*.mp4` are audio-only AAC (no video track), so you get sound with a blank
-frame. `./render.sh` produces them by default.
+That is why the links above go straight to the files rather than through a
+player. Verified against this repository, not just the docs.
 
 ### Render it yourself
 
@@ -40,7 +43,7 @@ frame. `./render.sh` produces them by default.
 
 Docker only — the image bundles SuperCollider and JACK's dummy driver, which is a
 real-time paced virtual sound card. Useful flags: `--bars` (default 16),
-`--fade-out`, `--mp3-bitrate` (default `96k`), `--formats` (`wav,mp3,mp4`).
+`--fade-out`, `--mp3-bitrate` (default `96k`), `--formats` (`wav,mp3,webm`).
 See [render.py](render.py).
 
 ### Spacial Thanks For
