@@ -20,7 +20,7 @@ You can try clicking right [here](https://emircanerkul.github.io/augmented-reali
 
 ### Other works related to this project.
 
-- Computer vision [companies in the world](https://emircanerkul.github.io/augmented-reality/computer-vision-companies/). Jquery and Jqvmap were used in this project.
+- Computer vision [companies in the world](https://github.com/emircanerkul/other/tree/project/computer-vision-companies) — Jquery and Jqvmap were used in this project.
 - Presentation [File](https://emircanerkul.github.io/augmented-reality/poster.jpg) (just for archiving. This file is in the Turkish language)
 - Point Counter android based and has a primitive algorithm. The algorithm is detecting dominant color (without black and white) and counting.
 
