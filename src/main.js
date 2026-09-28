@@ -1,9 +1,8 @@
 import * as XLSX from 'xlsx';
 import alertify from 'alertifyjs';
 import 'alertifyjs/build/css/alertify.min.css';
-import { initDB, storeSheet, getSheetData, getSheetNames } from './db.js';
+import { initDB, storeSheet, getSheetData, getSheetNames, clearAllData } from './db.js';
 
-const DATE_COLUMNS = ['End Project Date', 'Testing and Commissioning date', 'Project Start date', 'Job Creation Date'];
 const COLORS = ['#e3e3e3', '#4acccd', '#fcc468', '#ef8157', '#468966', '#FFF0A5', '#FFB03B', '#B64926', '#8E2800'];
 
 let sheets = {};
@@ -103,11 +102,12 @@ async function readAndProcess(file) {
       sheets[sheetName] = { headers: headers, rows: rows };
     }
 
-    // Store in IndexedDB
+    // Fresh import: wipe previous data, then store every sheet generically
+    await clearAllData();
     for (let i = 0; i < workbook.SheetNames.length; i++) {
       const sheetName = workbook.SheetNames[i];
       if (sheets[sheetName]) {
-        await storeSheet(sheetName, sheets[sheetName].headers, sheets[sheetName].rows);
+        await storeSheet(sheetName, sheets[sheetName].rows);
       }
     }
 
@@ -137,48 +137,54 @@ async function displayData() {
 
   const sheetName = sheetNames[0];
   const data = await getSheetData(sheetName);
-  
+
   // Dashboard statistics
   const now = Math.floor(Date.now() / 1000);
-  
+
   let ongoing = 0;
   let delayed = 0;
   let cancelled = 0;
-  let completed = 0;
 
   for (let i = 0; i < data.length; i++) {
     const d = data[i];
-    
+
     // Ongoing
     if (d['Job completed'] === 'No' && d['Remarks'] !== 'Cancelled') {
       const startTs = dateToTimestamp(d['Project Start date']);
       if (startTs !== null && startTs <= now) ongoing++;
     }
-    
+
     // Delayed
     if (d['Job completed'] === 'No' && d['End Project Date']) {
       const endTs = dateToTimestamp(d['End Project Date']);
       if (endTs !== null && endTs < now) delayed++;
     }
-    
+
     // Cancelled
     if (d['Remarks'] === 'Cancelled') cancelled++;
-    
-    // Completed (within 6 months)
-    if (d['Job completed'] === 'Yes' && d['End Project Date'] && d['Project Start date']) {
-      const endTs = dateToTimestamp(d['End Project Date']);
-      const startTs = dateToTimestamp(d['Project Start date']);
-      if (endTs !== null && startTs !== null) {
-        const diff = endTs - startTs;
-        if (diff < (60 * 60 * 24 * 30 * 6)) completed++;
-      }
-    }
   }
 
   document.getElementById('number-of-ongoing-project').textContent = ongoing;
   document.getElementById('number-of-delayed-project').textContent = delayed;
   document.getElementById('number-of-cancelled-project').textContent = cancelled;
-  document.getElementById('number-of-completed-project').textContent = completed;
+
+  // Completed within X months (selector-driven, like the original app)
+  const monthsSelect = document.getElementById('completed-months');
+  const updateCompleted = function() {
+    const months = parseFloat(monthsSelect.value) || 6;
+    let completed = 0;
+    for (let i = 0; i < data.length; i++) {
+      const d = data[i];
+      if (d['Job completed'] === 'Yes' && d['End Project Date'] && d['Project Start date']) {
+        const endTs = dateToTimestamp(d['End Project Date']);
+        const startTs = dateToTimestamp(d['Project Start date']);
+        if (endTs !== null && startTs !== null && (endTs - startTs) < (60 * 60 * 24 * 30 * months)) completed++;
+      }
+    }
+    document.getElementById('number-of-completed-project').textContent = completed;
+  };
+  monthsSelect.addEventListener('change', updateCompleted);
+  updateCompleted();
 
   // Total project value
   let totalValue = 0;

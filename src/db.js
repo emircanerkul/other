@@ -4,7 +4,7 @@
  */
 
 const DB_NAME = 'sheetjs';
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 const STORE_NAME = 'projects';
 
 let db = null;
@@ -24,10 +24,12 @@ export async function initDB() {
 
     request.onupgradeneeded = function(event) {
       const database = event.target.result;
-      if (!database.objectStoreNames.contains(STORE_NAME)) {
-        const store = database.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
-        store.createIndex('sheet', 'sheet', { unique: false });
+      // Reset the store on upgrade so stale schemas never survive
+      if (database.objectStoreNames.contains(STORE_NAME)) {
+        database.deleteObjectStore(STORE_NAME);
       }
+      const store = database.createObjectStore(STORE_NAME, { keyPath: 'id' });
+      store.createIndex('sheet', 'sheet', { unique: false });
     };
 
     request.onsuccess = function(event) {
@@ -42,49 +44,38 @@ export async function initDB() {
 }
 
 /**
- * Store sheet data in IndexedDB
- * @param {string} sheetName 
- * @param {Array} headers 
- * @param {Array} rows 
+ * Store sheet rows in IndexedDB
+ * Rows are kept generically with their original column keys,
+ * so any spreadsheet structure works without a hardcoded mapping.
+ * @param {string} sheetName
+ * @param {Array<Object>} rows
  */
-export async function storeSheet(sheetName, headers, rows) {
+export async function storeSheet(sheetName, rows) {
   return new Promise((resolve, reject) => {
     const transaction = db.transaction([STORE_NAME], 'readwrite');
     const store = transaction.objectStore(STORE_NAME);
-    
-    // Clear existing data for this sheet
-    const clearRequest = store.clear();
-    clearRequest.onsuccess = function() {
-      // Insert all rows
-      rows.forEach(function(row, index) {
-        const data = {
-          id: sheetName + '-' + index,
-          sheet: sheetName,
-          headers: headers,
-          projectNo: row['No.'],
-          jobType: row['Job type'],
-          engineerName: row['Engineer Name'],
-          jobCreationDate: row['Job Creation Date'],
-          projectStartDate: row['Project Start date'],
-          endProjectDate: row['End Project Date'],
-          jobCompleted: row['Job completed'],
-          remarks: row['Remarks'],
-          totalContractValue: row['Total contract value']
-        };
-        store.add(data);
+
+    rows.forEach(function(row, index) {
+      store.put({
+        id: sheetName + '-' + index,
+        sheet: sheetName,
+        data: row
       });
+    });
+
+    transaction.oncomplete = function() {
       resolve();
     };
-    clearRequest.onerror = function() {
-      reject(new Error('Failed to clear store'));
+    transaction.onerror = function() {
+      reject(new Error('Failed to store sheet data'));
     };
   });
 }
 
 /**
- * Get all data for a sheet
- * @param {string} sheetName 
- * @returns {Promise<Array>}
+ * Get all rows for a sheet (with original column keys)
+ * @param {string} sheetName
+ * @returns {Promise<Array<Object>>}
  */
 export async function getSheetData(sheetName) {
   return new Promise((resolve, reject) => {
@@ -94,20 +85,9 @@ export async function getSheetData(sheetName) {
     const request = index.getAll(sheetName);
 
     request.onsuccess = function() {
-      const results = request.result.map(function(item) {
-        return {
-          'No.': item.projectNo,
-          'Job type': item.jobType,
-          'Engineer Name': item.engineerName,
-          'Job Creation Date': item.jobCreationDate,
-          'Project Start date': item.projectStartDate,
-          'End Project Date': item.endProjectDate,
-          'Job completed': item.jobCompleted,
-          'Remarks': item.remarks,
-          'Total contract value': item.totalContractValue
-        };
-      });
-      resolve(results);
+      resolve(request.result.map(function(record) {
+        return record.data;
+      }));
     };
 
     request.onerror = function() {
@@ -139,7 +119,7 @@ export async function getSheetCount(sheetName) {
 }
 
 /**
- * Get all sheet names
+ * Get all sheet names that currently have stored data
  * @returns {Promise<string[]>}
  */
 export async function getSheetNames() {
@@ -147,14 +127,16 @@ export async function getSheetNames() {
     const transaction = db.transaction([STORE_NAME], 'readonly');
     const store = transaction.objectStore(STORE_NAME);
     const index = store.index('sheet');
-    const request = index.getAllKeys();
+    // getAll() returns the records; read the indexed 'sheet' values from them.
+    // (getAllKeys() would return primary keys like "Job List-0", NOT sheet names!)
+    const request = index.getAll();
 
     request.onsuccess = function() {
       const names = [];
       const seen = {};
       for (let i = 0; i < request.result.length; i++) {
-        const name = request.result[i];
-        if (!seen[name]) {
+        const name = request.result[i].sheet;
+        if (name && !seen[name]) {
           seen[name] = true;
           names.push(name);
         }
