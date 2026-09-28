@@ -400,7 +400,8 @@ def run(cmd, what):
     return res
 
 
-def find_first_sound(src: str, threshold_db: float = -50.0) -> float:
+def find_first_sound(src: str, threshold_db: float = -60.0,
+                     min_silence: float = 0.01) -> float:
     """Return the time of the first non-silent moment in `src`.
 
     FoxDot's Clock schedules every player's start on the next *bar* boundary, so
@@ -408,10 +409,14 @@ def find_first_sound(src: str, threshold_db: float = -50.0) -> float:
     note lands - about two seconds at the default tempo.  Trimming from the
     lead-in instead of from the first note shipped 32 s files that were 2.25 s
     of silence followed by 30 s of music.
+
+    The threshold has to be well below the level of the first note: a piece that
+    fades in softly is missed by -50 dB, and the trim then lands a quarter of a
+    beat late, which also misaligns every bar that follows.
     """
     res = subprocess.run(
         ["ffmpeg", "-hide_banner", "-i", src,
-         "-af", "silencedetect=noise=%.0fdB:d=0.02" % threshold_db,
+         "-af", "silencedetect=noise=%.0fdB:d=%.3f" % (threshold_db, min_silence),
          "-f", "null", "-"],
         stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     m = re.search(r"silence_end:\s*([0-9.]+)",
