@@ -21,24 +21,24 @@ Integrating plain HTML to drupal gives all power of drupal to your static websit
 your theme easily even if it's just one landing page. You can integrate your webform to any CRM application or you can
 do anything with a well-knowledged drupal developer.
 
-#### Startuprr ([Preview](https://raw.githubusercontent.com/emircanerkul/drupal-design-systems/master/startuprr/screenshot.png))
+#### Startuprr ([Preview](startuprr/screenshot.webp))
 
 #### Startuprr Setting Form
 
-![Startuprr Setting Form](https://raw.githubusercontent.com/emircanerkul/drupal-design-systems/master/startuprr-setting-form.gif)
+![Startuprr Setting Form](startuprr-setting-form.webp)
 
 ### Component Based Design System
 
 This approach is much more appropriate who have lots of similar pages/layouts but don't want to re-develop or re-update
 the same component again and again. With that approach, you can reuse preexisting components on any page.
 
-#### TTravel ([Preview](https://raw.githubusercontent.com/emircanerkul/drupal-design-systems/master/ttravel/screenshot.png))
+#### TTravel ([Preview](ttravel/screenshot.webp))
 
 #### TTravel Component Placement
 
 Easy to reuse components with the power of paragraph module.
 
-![TTravel Preview](https://raw.githubusercontent.com/emircanerkul/drupal-design-systems/master/ttravel/component-placement.png)
+![TTravel Preview](ttravel/component-placement.webp)
 
 #### TTravel Component Structure
 
@@ -46,7 +46,7 @@ With the power of the Drupal Paragraph module, this approach is possible.
 This [Patch](https://www.drupal.org/project/drupal/issues/3092496) is used for exploring and automatically including
 sublibraries within theme folders.
 
-![TTravel Preview](https://raw.githubusercontent.com/emircanerkul/drupal-design-systems/master/ttravel/component-structure.png)
+![TTravel Preview](ttravel/component-structure.webp)
 
 ### Atomic Design System with Emulsify
 
