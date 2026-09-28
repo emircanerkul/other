@@ -3,7 +3,7 @@
 
 In this project, I demonstrated how AR works on a browser. I used [jsartoolkit5](https://github.com/artoolkitx/jsartoolkit5) and [this](https://threejs.org/examples/#webgl_animation_skinning_morph) animated model on threejs.
 
-![Preview](https://raw.githubusercontent.com/emircanerkul/augmented-reality/master/preview.jpg)
+![Preview](preview.webp)
 
 ## Demo
 
