@@ -1,0 +1,5 @@
+# rendered audio
+audio/*.wav
+
+# engine scratch + logs
+debug/

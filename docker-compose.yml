@@ -1,0 +1,22 @@
+# Headless FoxDot rendering, no sound card required.
+#
+#   docker compose run --rm render                       # every piece in pieces/
+#   docker compose run --rm render pieces/insist.py      # just one
+#   docker compose run --rm render -- --bars 64          # extra flags for render.py
+#
+# Output lands in ./audio; intermediates and engine logs land in ./debug.
+
+services:
+  render:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: foxdot-music-synthesis:latest
+    # The container needs to talk to itself over UDP (FoxDot -> sclang -> scsynth).
+    network_mode: bridge
+    volumes:
+      - ./:/work
+    working_dir: /work
+    # Keep the build context out of the container: git objects and images.
+    environment:
+      - PULSE_INTERNAL=0
