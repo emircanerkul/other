@@ -1,0 +1,18 @@
+{
+  "name": "data-visualization",
+  "version": "2.0.0",
+  "description": "Spreadsheet visualization using SheetJS and IndexedDB",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "alertifyjs": "^1.14.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

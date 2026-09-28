@@ -1,278 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Project Tracker</title>
-
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-        name='viewport' />
-
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <!--Fonts and icons-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <!-- CSS Files -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/paper-dashboard.min.css" rel="stylesheet" />
-    <link href="assets/css/alertify.min.css" rel="stylesheet" media="screen">
-    <link href="assets/css/datatables.min.css" rel="stylesheet" media="screen">
-
-    <link href="assets/css/custom.css" rel="stylesheet" media="screen">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Tracker</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Montserrat',sans-serif}
+    .wrapper{display:flex;min-height:100vh}
+    .sidebar{width:260px;background:#fff;border-right:1px solid #eee;padding:20px}
+    .sidebar ul.nav{list-style:none;padding:0;margin:0}
+    .sidebar ul.nav li{margin-bottom:10px}
+    .sidebar ul.nav li a{display:flex;align-items:center;text-decoration:none;color:#333;padding:10px;border-radius:5px}
+    .sidebar ul.nav li a:hover{background:#f5f5f5}
+    .sidebar ul.nav li a i{margin-right:15px}
+    .main-panel{flex:1;padding:30px;background:#f5f5f5}
+    .navbar{background:#fff;padding:15px 30px;border-radius:8px;margin-bottom:30px;display:flex;justify-content:space-between;align-items:center}
+    .navbar-brand{font-size:1.2rem;font-weight:bold}
+    .content{max-width:1400px}
+    #upload{text-align:center;padding:60px 30px;background:#fff;border-radius:8px;margin-bottom:30px;border:3px dashed #ddd;transition:border-color 0.3s}
+    #upload:hover{border-color:#4acccd}
+    #upload-box{font-size:1.5rem;color:#888;font-weight:500}
+    .card{background:#fff;border-radius:8px;padding:20px;margin-bottom:20px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}
+    .card-stats{padding:15px}
+    .card-stats .row{display:flex;align-items:center}
+    .card-stats .icon-big{width:50px;height:50px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+    .card-stats .numbers{margin-left:15px}
+    .card-category{font-size:.85rem;color:#888;margin:0}
+    .card-title{font-size:1.5rem;font-weight:bold;margin:0}
+    table{width:100%;border-collapse:collapse}
+    table th,table td{padding:12px;text-align:left;border-bottom:1px solid #eee}
+    table th{background:#f9f9f9;font-weight:600}
+    .row{display:flex;flex-wrap:wrap;margin:-10px}
+    .col-md-4,.col-lg-3,.col-md-6,.col-sm-6{padding:10px;box-sizing:border-box}
+    .col-md-4{flex:0 0 33.33%}
+    .col-lg-3{flex:0 0 25%}
+    .col-md-6{flex:0 0 50%}
+    .col-sm-6{flex:0 0 50%}
+    .chart-container{height:300px;margin-top:10px}
+    @media(max-width:768px){.wrapper{flex-direction:column}.sidebar{width:100%;border-right:none;border-bottom:1px solid #eee}.sidebar ul.nav{display:flex;overflow-x:auto}.col-md-4,.col-lg-3,.col-md-6,.col-sm-6{flex:0 0 100%}}
+  </style>
 </head>
-
 <body>
-    <div class="wrapper ">
-        <div class="sidebar" data-color="white" data-active-color="danger">
-            <div class="sidebar-wrapper">
-                <ul class="nav">
-                    <li class="active">
-                        <a href="./dashboard.html">
-                            <i class="nc-icon nc-bank"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./example.xlsx">
-                            <i class="nc-icon nc-cloud-download-93"></i>
-                            <p>Download Example</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.freelancer.com/u/emircanerkul" target="_blank">
-                            <i class="nc-icon nc-spaceship"></i>
-                            <p>Support</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="main-panel">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-                <div class="container-fluid">
-                    <div class="navbar-wrapper">
-                        <div class="navbar-toggle">
-                            <button type="button" class="navbar-toggler">
-                                <span class="navbar-toggler-bar bar1"></span>
-                                <span class="navbar-toggler-bar bar2"></span>
-                                <span class="navbar-toggler-bar bar3"></span>
-                            </button>
-                        </div>
-                        <a class="navbar-brand" href="#pablo">Project Tracker</a>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-                        aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-bar navbar-kebab"></span>
-                        <span class="navbar-toggler-bar navbar-kebab"></span>
-                        <span class="navbar-toggler-bar navbar-kebab"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <form>
-                            <div class="input-group no-border">
-                                <input id="total-project-value" type="text" class="form-control" readonly>
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <i class="nc-icon nc-money-coins"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-
-            <div class="content">
-                <div id="upload">
-                    <div id="upload-box">Drop an XLSX File Here</div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-5 col-md-4">
-                                        <div class="icon-big text-center icon-warning">
-                                            <i class="nc-icon nc-paper text-success"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-7 col-md-8">
-                                        <div class="numbers">
-                                            <p class="card-category">ongoing</p>
-                                            <p id="number-of-ongoing-project" class="card-title">
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer ">
-                                <hr>
-                                <div class="stats">
-                                    <i class="fa fa-refresh"></i> Update Now
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-5 col-md-4">
-                                        <div class="icon-big text-center icon-warning">
-                                            <i class="nc-icon nc-paper text-warning"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-7 col-md-8">
-                                        <div class="numbers">
-                                            <p class="card-category">delayed</p>
-                                            <p id="number-of-delayed-project" class="card-title"></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer ">
-                                <hr>
-                                <div class="stats">
-                                    <i class="fa fa-refresh"></i> Update Now
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-5 col-md-4">
-                                        <div class="icon-big text-center icon-warning">
-                                            <i class="nc-icon nc-paper text-danger"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-7 col-md-8">
-                                        <div class="numbers">
-                                            <p class="card-category">cancelled</p>
-                                            <p id="number-of-cancelled-project" class="card-title"></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer ">
-                                <hr>
-                                <div class="stats">
-                                    <i class="fa fa-refresh"></i> Update Now
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-5 col-md-4">
-                                        <div class="icon-big text-center icon-warning">
-                                            <i class="nc-icon nc-paper text-primary"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-7 col-md-8">
-                                        <div class="numbers">
-                                            <p class="card-category">completed</p>
-                                            <p class="card-title" id="number-of-completed-project"></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer ">
-                                <hr>
-                                <div class="stats">
-                                    <select id="number-of-completed-project-date-range-sellector" class="form-control">
-                                        <option value="1">Within 1 month</option>
-                                        <option value="2">Within 2 month</option>
-                                        <option value="3">Within 3 month</option>
-                                        <option value="4">Within 4 month</option>
-                                        <option value="5">Within 5 month</option>
-                                        <option value="6" selected>Within 6 month</option>
-                                        <option value="7">Within 7 month</option>
-                                        <option value="8">Within 8 month</option>
-                                        <option value="9">Within 9 month</option>
-                                        <option value="10">Within 10 month</option>
-                                        <option value="11">Within 11 month</option>
-                                        <option value="12">Within 12 month</option>
-                                        <option value="24">Within 24 month</option>
-                                        <option value="48">Within 48 month</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <table id="projects" class="table table-striped table-bordered" style="width:100%">
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card ">
-                            <div class="card-header ">
-                                <h5 class="card-title">Project Count</h5>
-                                <p class="card-category">Number of projects per engineer</p>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="number-of-projects-per-engineer"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card ">
-                            <div class="card-header ">
-                                <h5 class="card-title">Project Value</h5>
-                                <p class="card-category">Individual engineer project value</p>
-                            </div>
-                            <div class="card-body ">
-                                <canvas id="individual-engineer-project-value"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card ">
-                            <div class="card-header ">
-                                <h5 class="card-title">Starting Speed</h5>
-                                <p class="card-category">Took lesser time to start a project</p>
-                            </div>
-                            <div class="card-body ">
-                                <canvas id="quick-engineers"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="wrapper">
+    <div class="sidebar">
+      <ul class="nav">
+        <li><a href="#"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+        <li><a href="example.xlsx" download><i class="fas fa-download"></i> Download Example</a></li>
+        <li><a href="https://www.freelancer.com/u/emircanerkul" target="_blank"><i class="fas fa-headset"></i> Support</a></li>
+      </ul>
     </div>
-
-    <!--   Core JS Files   -->
-    <script src="assets/js/core/jquery.min.js"></script>
-    <script src="assets/js/core/popper.min.js"></script>
-    <script src="assets/js/core/bootstrap.min.js"></script>
-    <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-
-    <script src="assets/js/datatables.min.js" type="text/javascript"></script>
-
-    <!-- Chart JS -->
-    <script src="assets/js/plugins/chartjs.min.js"></script>
-    <script src="assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
-
-    <script src="assets/js/alertify.min.js"></script>
-    <script src="assets/js/xlsx.full.min.js"></script>
-    <script src="assets/js/dropsheet.js"></script>
-    <script src="assets/js/main.js"></script>
+    <div class="main-panel">
+      <div class="navbar">
+        <span class="navbar-brand">Project Tracker</span>
+        <input id="total-project-value" type="text" readonly placeholder="Total Value" style="border:1px solid #ddd;border-radius:4px;padding:8px;width:200px"/>
+      </div>
+      <div class="content">
+        <div id="upload"><div id="upload-box">Drop an XLSX File Here</div></div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6"><div class="card card-stats"><div class="row"><div class="icon-big text-success"><i class="fas fa-file-alt"></i></div><div class="numbers"><p class="card-category">ongoing</p><p id="number-of-ongoing-project" class="card-title"></p></div></div></div></div>
+          <div class="col-lg-3 col-md-6 col-sm-6"><div class="card card-stats"><div class="row"><div class="icon-big text-warning"><i class="fas fa-file-alt"></i></div><div class="numbers"><p class="card-category">delayed</p><p id="number-of-delayed-project" class="card-title"></p></div></div></div></div>
+          <div class="col-lg-3 col-md-6 col-sm-6"><div class="card card-stats"><div class="row"><div class="icon-big text-danger"><i class="fas fa-file-alt"></i></div><div class="numbers"><p class="card-category">cancelled</p><p id="number-of-cancelled-project" class="card-title"></p></div></div></div></div>
+          <div class="col-lg-3 col-md-6 col-sm-6"><div class="card card-stats"><div class="row"><div class="icon-big text-primary"><i class="fas fa-file-alt"></i></div><div class="numbers"><p class="card-category">completed</p><p id="number-of-completed-project" class="card-title"></p></div></div></div></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12"><div class="card"><table id="projects"></table></div></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4"><div class="card"><h5 class="card-title">Project Count</h5><p class="card-category">Number of projects per engineer</p><div class="chart-container"><canvas id="number-of-projects-per-engineer"></canvas></div></div></div>
+          <div class="col-md-4"><div class="card"><h5 class="card-title">Project Value</h5><p class="card-category">Individual engineer project value</p><div class="chart-container"><canvas id="individual-engineer-project-value"></canvas></div></div></div>
+          <div class="col-md-4"><div class="card"><h5 class="card-title">Starting Speed</h5><p class="card-category">Time to start a project</p><div class="chart-container"><canvas id="quick-engineers"></canvas></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
 </body>
+</html>

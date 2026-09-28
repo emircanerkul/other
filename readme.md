@@ -1,31 +1,36 @@
-## Data Visualization with SheetJS + WebSQL ([Limited Support](https://caniuse.com/#feat=sql-storage))
+## Data Visualization with SheetJS + IndexedDB
 
-We don't need keep running server. We can read xlsx file and create database on client side. This project about spreadsheet visualization.
+Modern spreadsheet visualization tool that runs entirely in the browser. Upload XLSX files and visualize project data with interactive charts and tables.
 
 ![Preview](https://raw.githubusercontent.com/emircanerkul/other/project/data-visualization/preview.webp)
 
-#### [Click](https://emircanerkul.github.io/data-visualization/) for Online Preview
-
 #### Requirement
 
-- Just HTTP Web Server (Great isn't it?)
+- Node.js or Bun
+- Modern browser with IndexedDB support (Chrome, Firefox, Safari, Edge)
 
 #### Installation
 
-- Install [Docker Desktop](https://www.docker.com/get-started)
-- Clone Project
-- Open Terminal in Project Dir
-- `docker run --rm -v $(pwd):/usr/share/nginx/html:ro -p 80:80`
-- Visit 127.0.0.1
+```bash
+# Clone project
+git clone <repo-url>
+cd data-visualization
+
+# Install dependencies
+npm install
+
+# Development server
+npm run dev
+
+# Production build
+npm run build
+npm run preview
+```
 
 #### Special thanks for
 
 - SheetJS https://github.com/sheetjs/sheetjs
-- Paper Dashboard https://github.com/creativetimofficial/paper-dashboard
-- DataTables https://github.com/DataTables/DataTables
-- Bootstrap https://github.com/twbs/bootstrap
 - AlertifyJS https://github.com/MohammadYounes/AlertifyJS
-- PopperJS https://github.com/popperjs/popper-core
 - Favicon http://glyphish.com/
 
 #### License
