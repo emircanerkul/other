@@ -8,7 +8,7 @@ I decided to end this project because I didn't want to develop the game engine. 
 
 ##  Preview (Click image to [play game](https://emircanerkul.github.io/rpg-game-development-adventure/dist/))
 
-[![Day 1](https://raw.githubusercontent.com/emircanerkul/rpg-game-development-adventure/master/gifs/done.png)](https://emircanerkul.github.io/rpg-game-development-adventure/dist/)
+[![Preview](gifs/done.webp)](https://emircanerkul.github.io/rpg-game-development-adventure/dist/)
 
 ## Installation
 
