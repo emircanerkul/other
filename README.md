@@ -14,13 +14,19 @@ Code Grepper was a Raycast extension that searched [CodeGrepper](https://www.cod
 listed code examples with a detail view, so you could grab a snippet without ever leaving the
 launcher.
 
+## On the Raycast Store
+
+Code Grepper was published on the official Raycast Store:
+
+![Code Grepper extension page on the Raycast Store — 522 installs](assets/raycast-store.webp)
+
 ## Screenshots
 
 | Empty search | Search results |
 | :---: | :---: |
-| ![Empty search — enter a query to search code examples on codegrepper.com](assets/ss-home.png) | ![Search results for "php fibonacci" with fallback web search actions](assets/ss-search.png) |
+| ![Empty search — enter a query to search code examples on codegrepper.com](assets/ss-home.webp) | ![Search results for "php fibonacci" with fallback web search actions](assets/ss-search.webp) |
 | **Code example detail** | **No results found** |
-| ![Detail view of a code example with Copy to Clipboard action](assets/ss-detail.png) | ![No code example found, with fallback web search actions](assets/ss-empty-search.png) |
+| ![Detail view of a code example with Copy to Clipboard action](assets/ss-detail.webp) | ![No code example found, with fallback web search actions](assets/ss-empty-search.webp) |
 
 ## Features
 
@@ -30,6 +36,18 @@ launcher.
 - 📋 Copy any example to your clipboard
 - 🔗 Visit the author's profile or donate to them
 - 🌐 Fallback **Search in Google / DuckDuckGo / Bing** actions when nothing was found
+
+## Thank you 💚
+
+Code Grepper was installed **over 500 times** through the Raycast Store — thank you to
+**everyone** who ever used it! 🎉
+
+Every search, every copied snippet and every upvote counted. Knowing that hundreds of developers
+opened Raycast, typed a query, and got a working piece of code back without opening a single
+browser tab is exactly why this extension was built.
+
+If you were one of those 522 users: consider this repository a small thank-you note addressed to
+you. 🙏
 
 ## Development
 
