@@ -10,7 +10,7 @@ Fully responsive two page html template with Jquery and [Bootstrap 4](https://ge
 
 ### Premium Corporate [preview](premium-corporate)
 
-I developed fully responsive html template with [bootstrap 4](https://getbootstrap.com/docs/4.0/) via composer & [icomoon](icomoon.io).
+I developed fully responsive html template with [bootstrap 4](https://getbootstrap.com/docs/4.0/) via composer & [icomoon](https://icomoon.io/).
 
 ### Piroll: A design template for portfolio [preview](piroll)
 
