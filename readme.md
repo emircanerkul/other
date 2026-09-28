@@ -43,7 +43,7 @@
 
 - Switched local development environment to [Docksal](https://github.com/docksal/docksal)
 - Installed and used Hierarchical Taxonomy Import module
-- Province, district, neighborhood [data converter](https://github.com/emircanerkul/drupal-first-step/tree/master/province-district-neighborhood) developed for HTI
+- Province, district, neighborhood [data converter](https://github.com/emircanerkul/other/tree/project/drupal-first-step/province-district-neighborhood) developed for HTI
 
 #### 09.08.2020
 
@@ -74,7 +74,7 @@
 - Learned Git and worked with Gitlab as a team
 
 #### 15.08.2020
-- PSD to [HTML](https://github.com/emircanerkul/psd-to-html/tree/master/premium-corporate)
+- PSD to [HTML](https://github.com/emircanerkul/other/tree/project/psd-to-html/premium-corporate)
 
 #### 16.08.2020
 - Watched Tutorial about [LaTeX](https://www.youtube.com/watch?v=VhmkLrOjLsw) format for writing article
@@ -99,13 +99,13 @@
 - One Page Drupal 8 Theme developed with [tutorials](https://www.youtube.com/playlist?list=PL2FjJlpyDp0Pfy-nf7OXGesiNNDMhgXPv)
 
 #### 21.08.2020
-- PSD to [HTML](https://github.com/emircanerkul/psd-to-html/tree/master/e-learning)
+- PSD to [HTML](https://github.com/emircanerkul/other/tree/project/psd-to-html/e-learning)
 
 #### 22.08.2020
-- PSD to [HTML](https://github.com/emircanerkul/psd-to-html/tree/master/e-learning)
+- PSD to [HTML](https://github.com/emircanerkul/other/tree/project/psd-to-html/e-learning)
 
 #### 23.08.2020
-- PSD to [HTML](https://github.com/emircanerkul/psd-to-html/tree/master/e-learning)
+- PSD to [HTML](https://github.com/emircanerkul/other/tree/project/psd-to-html/e-learning)
 
 #### 24.08.2020
 - Getting started [ECMAScript 6](https://www.w3schools.com/js/js_es6.asp) and [Dart](https://dart.dev/)
