@@ -1,30 +1,72 @@
 # Customizable CV Generator
 
-Create specific resume for each target firms. Firstly decide which position do you want. Secondly select your strategy according to the time allocated by the target firm then select your resume primary color and resume template.
+Tailor a resume for every application. Pick a profile, a level of detail (strategy), an accent color, and a template — the preview updates live, and **Generate & Download** produces a ready-to-send PDF via [wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf).
 
-## Requirement
-* Web enviroment (Xammpp, Wamp etc.) and [Wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf)
-* or
-* [Docker](https://www.docker.com/get-started)
+![Preview](preview.webp)
 
-## Installation via Traditional Method
-* Install [Wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf)
-* Download [git repo](https://github.com/emircanerkul/cvgen/archive/master.zip) on your local webserver folder
-* Create your profile.json file
+## Contents
 
-## Installation via Docker (Suggested)
-* docker build --no-cache=true --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') -t cvgen:latest .
-* docker run --rm -it -p 80:80 -v $(pwd):/var/www/html cvgen (on linux) or
-* docker run --rm -it -p 80:80 -v ${pwd}:/var/www/html cvgen (in powershell) or
-* docker run --rm -it -p 80:80 -v %cd%:/var/www/html cvgen (in cmd)
+- [Requirements](#requirements)
+- [Docker (suggested)](#docker-suggested)
+- [Traditional installation](#traditional-installation)
+- [Usage](#usage)
+- [Profile file — CVGen schema](#profile-file--cvgen-schema)
+- [Profile file — tagging](#profile-file--tagging)
+- [Template engine](#template-engine)
+- [Project layout](#project-layout)
+- [Building the Docker image](#building-the-docker-image)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
 
-## Profile File CVGen Schema
+## Requirements
+
+- **Docker** (or a compatible engine such as Podman) — recommended
+- *or* a classic web stack (XAMPP, WAMP, plain Apache + PHP) with [wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf) installed
+
+> **Note:** The historical `php:5.6-apache` base image no longer builds: Debian *stretch* is EOL (its apt repositories have been archived) and its bundled wkhtmltopdf `.deb` is amd64-only. Use the Docker instructions below — the image is now based on Ubuntu 24.04 LTS, works on both amd64 and Apple Silicon (arm64), and ships Apache 2.4, PHP 8.3, and wkhtmltopdf 0.12.6.
+
+## Docker (suggested)
+
+```bash
+docker build --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') -t cvgen:latest .
+docker run -d --name cvgen -p 8000:8000 cvgen:latest
+```
+
+Then open **http://localhost:8000**.
+
+The image is self-contained: the application is copied in at build time, so no volume mount is required. It serves the app on port **8000** inside the container (as well as 80), which is what you should publish — port 80 is only reachable with root privileges on rootless setups such as Podman.
+
+### Podman
+
+```bash
+podman build --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') -t cvgen:latest .
+podman run -d --name cvgen -p 8000:8000 cvgen:latest
+```
+
+### Traditional installation
+
+- Install [wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf)
+- Download the [repository](https://github.com/emircanerkul/other/archive/refs/heads/project/cvgen.zip) and place it in your local web server's document root
+- Create your `profile.json` file (see the schema below)
+
+## Usage
+
+1. Pick a **profile** from the dropdown — a sample `Example` profile is included to get you started.
+2. Choose a **strategy**: *Important* shows the short version of tagged texts and lower-rated skills; *Detailed* shows everything.
+3. Decide whether to **show or hide** the profile photo.
+4. Pick a **primary color** (a color matching the target firm's brand works nicely).
+5. Click a template card to preview the result live.
+6. Hit **Generate & Download** to produce the PDF.
+
+## Profile file — CVGen schema
+
+Profiles live in `data/profiles/` as JSON files; the file name becomes the profile name in the UI (a leading `[EN] Example.json` is treated as an internal example and hidden from the list). Translation strings live in `data/translation.json` (`en` / `tr`).
 
 ```json
 {
     "@context": "http://github.com/emircanerkul/cvgen",
     "@type": "CVGen",
-    "lang": "tr/en/?:fill->translation.json",
+    "lang": "en",
     "name": "String",
     "surname": "String",
     "expertise": "String",
@@ -56,13 +98,6 @@ Create specific resume for each target firms. Firstly decide which position do y
             "date_at": "String@date",
             "date_from": "String@date",
             "excerpt": "String@ShortText"
-        },
-        {
-            "organization": "String",
-            "qualification": "String",
-            "date_at": "String@date",
-            "date_from": "String@date",
-            "excerpt": "String@ShortText"
         }
     ],
     "certificate": [
@@ -78,22 +113,9 @@ Create specific resume for each target firms. Firstly decide which position do y
         {
             "ability": "String",
             "level": 9
-        },
-        {
-            "ability": "String",
-            "level": 6
-        },
-        {
-            "ability": "String",
-            "level": 8
         }
     ],
     "projects": [
-        {
-            "title": "String",
-            "excerpt": "String",
-            "used": "String"
-        },
         {
             "title": "String",
             "excerpt": "String",
@@ -109,42 +131,53 @@ Create specific resume for each target firms. Firstly decide which position do y
     "hobbies": [
         {
             "title": "String",
-            "icon":"String@icon:[study,pen,music1]",
+            "icon": "String@icon:[study,pen,music1]",
             "excerpt": "String"
         }
     ]
 }
 ```
 
-## Profile File Tagging
+Photos referenced by `photo` go into `data/images/`.
 
-* If you want to tag variable you just turn into object.
+## Profile file — tagging
+
+Tagged content is what the *strategy* selector switches between — *Important* keeps only the short versions, *Detailed* shows everything.
+
+- To tag a **variable**, turn it into an object with `detailed` / `important` variants:
+
 ```json
 "about": {
-        "detailed": "More detailed long text here",
-        "important": "Short text here"
-    }
+    "detailed": "More detailed long text here",
+    "important": "Short text here"
+}
 ```
 
-* If you want to tag object you just add tag value on object.
+- To tag an **object inside an array**, add a `tag` value to it:
+
 ```json
 "certificate": [
-        {
-            "organization": "String",
-            "qualification": "String",
-            "date_at": "String@date",
-            "date_from": "String@date",
-            "excerpt": "String@shortText",
-            "tag": "detailed"
-        }
-    ]
+    {
+        "organization": "String",
+        "qualification": "String",
+        "date_at": "String@date",
+        "date_from": "String@date",
+        "excerpt": "String@shortText",
+        "tag": "detailed"
+    }
+]
 ```
 
-## Template Engine
+Array entries can also carry a numeric `level` (as in `abilities`): with the *Important* strategy, anything with `level <= 6` is filtered out.
 
-* Language Variable I&=VARKEY1=&I
-* Profile Variable I%=VARKEY2=%I
-* Profile Array Starts: I%=VARKEY3=I Ends: I=VARKEY3=%I
+## Template engine
+
+Templates are plain HTML files in `templates/`; anything the engine understands is expressed with `I%=…` / `…=%I` style markers:
+
+- Language variable: `I&=VARKEY1=&I` (resolved against `data/translation.json`)
+- Profile variable: `I%=VARKEY2=%I`
+- Profile array loop: starts with `I%=VARKEY3=I` and ends with `I=VARKEY3=%I`
+
 ```html
 I%=experience=I
 <article>
@@ -158,13 +191,44 @@ I%=experience=I
 I=experience=%I
 ```
 
-## Thank you
-* [Ashish Kulkarni](https://github.com/ashkulz) & [Jakob Truelsen](https://github.com/antialize) and [others](https://github.com/wkhtmltopdf/wkhtmltopdf/graphs/contributors) for [Wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf)
-* [Thomas Hardy](http://www.thomashardy.me.uk) for [html resume template](http://www.thomashardy.me.uk/free-responsive-html-css3-cv-template)
-* [Simon](https://github.com/Simonwep/) for [color picker plugin](https://github.com/Simonwep/pickr)
-* [webloopshub](https://pixabay.com/tr/users/webloopshub-12869313/?tab=videos) from [Pixebay](https://pixabay.com/videos/3d-rendering-movement-design-24717/) for background video
-* [Icomoon](https://icomoon.io) for icons
-* [Icon8](https://icons8.com) for favicon
+## Project layout
+
+```
+├── index.html            # UI: selectors, live template previews, generate button
+├── core/
+│   ├── cvgen.php         # profile/template scanning, compiling, PDF generation
+│   └── ajax.php          # JSON endpoints: profile_list, template_list, template, generate
+├── templates/            # HTML resume templates (basic, wide, ribbed)
+├── data/
+│   ├── profiles/         # your CVs as JSON (one file per profile)
+│   ├── images/           # profile photos
+│   └── translation.json  # UI + resume strings per language
+└── assets/               # css, js, icons, background video
+```
+
+## Building the Docker image
+
+`BUILD_DATE` is an optional build arg baked into the image labels:
+
+```bash
+docker build --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') -t cvgen:latest .
+```
+
+Runtime notes:
+
+- `data/profiles/` and `data/images/` are baked into the image. To iterate on profiles without rebuilding, mount them over the baked copies: `-v $(pwd)/data/profiles:/var/www/html/data/profiles`
+- The generated `resume.pdf` is written to the document root by the web server user (`www-data`), which the image sets up for you.
+- Logs: `docker logs cvgen`, or `docker exec cvgen tail -f /var/log/apache2/error.log`.
+
+## Acknowledgements
+
+- [Ashish Kulkarni](https://github.com/ashkulz) & [Jakob Truelsen](https://github.com/antialize) and [others](https://github.com/wkhtmltopdf/wkhtmltopdf/graphs/contributors) for [wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf)
+- [Thomas Hardy](http://www.thomashardy.me.uk) for the [HTML resume template](http://www.thomashardy.me.uk/free-responsive-html-css3-cv-template)
+- [Simon](https://github.com/Simonwep/) for the [Pickr color picker](https://github.com/Simonwep/pickr)
+- [webloopshub](https://pixabay.com/tr/users/webloopshub-12869313/?tab=videos) from [Pixabay](https://pixabay.com/videos/3d-rendering-movement-design-24717/) for the background video
+- [IcoMoon](https://icomoon.io) for icons
+- [Icons8](https://icons8.com) for the favicon
 
 ## License
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](http://badges.mit-license.org)
