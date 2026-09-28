@@ -2,7 +2,7 @@
 
 Üniversitelerin bilimsel hazırlık bölümleri için hazırlanan bu uygulama ile başarı durumunuzu kontrol edebilirsiniz.
 
-![Preview](https://raw.githubusercontent.com/emircanerkul/Bilimsel-Hazirlik-Not-Hesaplama/master/assets/img/preview.jpg)
+![Preview](assets/img/preview.webp)
 
 #### Special Thanks
 * Akhil Sai Ram https://codepen.io/akhil_001/pen/zoQdaO
