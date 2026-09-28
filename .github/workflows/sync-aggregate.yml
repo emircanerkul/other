@@ -1,0 +1,24 @@
+# Per-branch relay: GitHub only runs push-workflows that exist in the pushed
+# branch, so this tiny file is committed to every project/* branch. Any push
+# to that branch instantly triggers the central "Aggregate & deploy portal"
+# workflow on main (no rebuild loop — the central workflow never pushes back).
+
+name: sync-aggregate
+on: push
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger central aggregate
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run aggregate.yml \
+            --repo emircanerkul/other \
+            --ref main \
+            -f reason="push:${GITHUB_SHA::7} on ${GITHUB_REF_NAME}"
