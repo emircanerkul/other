@@ -419,7 +419,7 @@ def main() -> int:
     ap.add_argument("--piece", required=True, help="path to a FoxDot .py piece")
     ap.add_argument("--out", default="/work/audio", help="output directory")
     ap.add_argument("--name", default=None, help="basename for the rendered files")
-    ap.add_argument("--bars", type=int, default=32, help="length in bars (default 32)")
+    ap.add_argument("--bars", type=int, default=16, help="length in bars (default 16)")
     ap.add_argument("--bpm", type=float, default=DEFAULT_BPM)
     ap.add_argument("--meter", default="4/4", help='FoxDot meter, e.g. "3/4"')
     ap.add_argument("--samplerate", type=int, default=DEFAULT_SAMPLE_RATE)
@@ -427,8 +427,10 @@ def main() -> int:
     ap.add_argument("--bits", type=int, default=DEFAULT_BITS, choices=[16, 24, 32])
     ap.add_argument("--fade-out", type=float, default=2.0,
                     help="length of the fade-out at the end, in seconds")
-    ap.add_argument("--formats", default="wav,mp3,ogg",
-                    help="comma separated subset of wav,mp3,ogg")
+    ap.add_argument("--formats", default="wav,mp3,ogg,mp4",
+                    help="comma separated subset of wav,mp3,ogg,mp4. mp4 is an "
+                         "audio-only AAC file - the only one of these that can be "
+                         "embedded in a GitHub README, and only as an attachment")
     ap.add_argument("--mp3-bitrate", default=DEFAULT_MP3_BITRATE,
                     help="MP3 bitrate, e.g. 96k, 128k, 192k (default %(default)s)")
     ap.add_argument("--keep-raw", action="store_true",
@@ -557,8 +559,16 @@ def main() -> int:
                 "-id3v2_version", "3"] + tags)
 
     if "ogg" in formats:
-        encode(wav_path, os.path.join(out_dir, "%s.ogg" % name), duration, args.fade_out, 0.0,
+        encode(wav_path, os.path.join(out_dir, "%s.ogg" % name), duration,
+               args.fade_out, 0.0,
                ["-c:a", "libvorbis", "-q:a", "5"] + tags)
+
+    if "mp4" in formats:
+        # Audio-only MP4: this is the one format that can be embedded in a
+        # GitHub README, but only as an *attachment* (see the readme).
+        encode(wav_path, os.path.join(out_dir, "%s.mp4" % name), duration,
+               args.fade_out, 0.0,
+               ["-vn", "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart"] + tags)
 
     if "wav" not in formats:
         os.remove(wav_path)
