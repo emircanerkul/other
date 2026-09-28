@@ -14,9 +14,9 @@ recording.
 regenerated in a minute.
 
 **Open the `listen` link and it plays in the browser.** That is the WebM talking:
-`raw.githubusercontent.com` serves `.webm` as `video/webm`, which every browser
+`raw.githubusercontent.com` serves `.webm` as `audio/webm`, which every browser
 hands to its built-in player. The `.mp3` next to it is the fallback for anything
-older — GitHub serves it as `audio/mpeg`, which Firefox and Safari play inline
+older — GitHub serves that as `audio/mpeg`, which Firefox and Safari play inline
 but Chrome downloads.
 
 ### Can a README embed a player?
