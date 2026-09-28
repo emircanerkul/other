@@ -2,7 +2,7 @@
 
 In this project, I demonstrate what design system are used and how works with Drupal.
 
-To be able to do that, I used previously developed [themes](https://github.com/emircanerkul/psd-to-html)
+To be able to do that, I used previously developed [themes](https://github.com/emircanerkul/other/tree/project/psd-to-html)
 
 ##### Table of Contents
 
