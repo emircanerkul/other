@@ -1,5 +1,5 @@
-# [Ip Logger](https://github.com/emircanerkul/ip-logger/archive/master.zip)
+# [Ip Logger](https://github.com/emircanerkul/other/tree/project/ip-logger)
 
-![enter image description here](https://raw.githubusercontent.com/emircanerkul/ip-logger/master/preview.jpg)
+![Preview](preview.webp)
 ## License
 The style is available under the  [MIT license](http://opensource.org/licenses/MIT).
