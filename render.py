@@ -49,6 +49,7 @@ WINDOWS_SND_PREFIX = "C:/Users/Ryan/Documents/GitHub/FoxDot/FoxDot/snd/"
 DEFAULT_SAMPLE_RATE = 44100
 DEFAULT_BLOCK_SIZE = 128
 DEFAULT_BITS = 24
+DEFAULT_MP3_BITRATE = "96k"    # transparent enough for synth material, half of 192k
 DEFAULT_BPM = 120.0      # FoxDot's TempoClock default
 DEFAULT_METER = (4, 4)   # FoxDot's TempoClock default -> one bar == 4 beats
 
@@ -428,6 +429,8 @@ def main() -> int:
                     help="length of the fade-out at the end, in seconds")
     ap.add_argument("--formats", default="wav,mp3,ogg",
                     help="comma separated subset of wav,mp3,ogg")
+    ap.add_argument("--mp3-bitrate", default=DEFAULT_MP3_BITRATE,
+                    help="MP3 bitrate, e.g. 96k, 128k, 192k (default %(default)s)")
     ap.add_argument("--keep-raw", action="store_true",
                     help="keep the untrimmed SuperCollider recording in --workdir")
     ap.add_argument("--workdir", default="/tmp/foxdot-render",
@@ -548,8 +551,10 @@ def main() -> int:
             "-metadata", "album=foxdot-music-synthesis"]
 
     if "mp3" in formats:
-        encode(wav_path, os.path.join(out_dir, "%s.mp3" % name), duration, args.fade_out, 0.0,
-               ["-c:a", "libmp3lame", "-b:a", "192k", "-id3v2_version", "3"] + tags)
+        encode(wav_path, os.path.join(out_dir, "%s.mp3" % name), duration,
+               args.fade_out, 0.0,
+               ["-c:a", "libmp3lame", "-b:a", args.mp3_bitrate,
+                "-id3v2_version", "3"] + tags)
 
     if "ogg" in formats:
         encode(wav_path, os.path.join(out_dir, "%s.ogg" % name), duration, args.fade_out, 0.0,

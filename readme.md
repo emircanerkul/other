@@ -36,20 +36,20 @@ exactly 32 s of stereo 44.1 kHz audio:
 | Format | `almost_done` | `insist` | Bitrate | Every browser? |
 | :--- | ---: | ---: | ---: | :---: |
 | `audio/*.wav` | **8.47 MB** (8.08 MiB) | **8.47 MB** (8.08 MiB) | 1411 kbps | No (IE 11) |
-| `audio/*.mp3` | **0.77 MB** (0.73 MiB) | **0.77 MB** (0.73 MiB) | 192 kbps CBR | **Yes** |
+| `audio/*.mp3` | **0.38 MB** (0.37 MiB) | **0.38 MB** (0.37 MiB) | 96 kbps CBR | **Yes** |
 | `audio/*.ogg` | **0.60 MB** (0.57 MiB) | **0.43 MB** (0.41 MiB) | ~112-155 kbps VBR | No (Safari needs 18.4+) |
 
 * **WAV** - uncompressed PCM, so 44,100 x 2 channels x 2 bytes = 176,400 B/s.
-  32 s still weighs 8.5 MB: about 11x an MP3, and 34 MB for the two of them
+  32 s still weighs 8.5 MB: about 22x a 96 kbps MP3, and 17 MB for the two of them
   together. Perfect quality, but GitHub asks you to keep files under 50 MiB and a
   WAV is pure waste in a repo that can regenerate it in a minute, so it is
-  `gitignore`d here (see `--keep-raw` below if you want it). The MP3 is a 192
-  kbps CBR encode of that 24-bit master, which is transparent enough for this
-  material anyway.
+  `gitignore`d here (see `--keep-raw` below if you want it).
 * **MP3** - the one that just works. Universal in every browser since the
   mid-2000s, including every Safari and every iOS, and it is what the **Listen**
-  buttons above point at.
-* **OGG / Vorbis** - roughly 20-45 % smaller than MP3 for the same quality and
+  buttons above point at. Committed at 96 kbps CBR (`--mp3-bitrate` if you want
+  more) - that is already comfortably above what the material needs, since the
+  pieces are narrow-band synth voices rather than dense full-range mixes.
+* **OGG / Vorbis** - roughly 12-56 % smaller than MP3 for the same quality and
   not patent-encumbered, but **Safari and iOS only support Vorbis from 18.4
   onwards**, so it cannot be the only audio in a `README`.
 
@@ -122,6 +122,7 @@ docker run --rm -v "$PWD:/work" foxdot-music-synthesis \
 | `--meter` | `4/4` | Time signature |
 | `--fade-out` | `2.0` | Length of the fade-out, in seconds |
 | `--formats` | `wav,mp3,ogg` | Which files to write |
+| `--mp3-bitrate` | `96k` | MP3 bitrate, e.g. `128k`, `192k` |
 | `--bits` | `24` | WAV sample size: 16, 24 or 32 |
 | `--keep-raw` | off | Keep the untrimmed master recording in `--workdir` |
 
