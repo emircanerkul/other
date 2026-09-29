@@ -23,13 +23,13 @@
   "devDependencies": {},
   "author": "Emircan ERKUL",
   "license": "MIT",
-  "homepage": "https://github.com/emircanerkul/qgen",
+  "homepage": "https://github.com/emircanerkul/other/tree/project/qgen-exam-generator",
   "bugs": {
-    "url": "https://github.com/emircanerkul/qgen/issues",
+    "url": "https://github.com/emircanerkul/other/tree/project/qgen-exam-generator/issues",
     "email": "qgen@emircanerkul.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/emircanerkul/qgen.git"
+    "url": "https://github.com/emircanerkul/other/tree/project/qgen-exam-generator.git"
   }
 }
