@@ -76,8 +76,16 @@ function getQuestion($level) {
   } else {
     if ($_SESSION["next"] || (!isset($_SESSION["level"]) || $level != $_SESSION["level"])) {
       $_SESSION["level"] = $level;
-      $pdo = new PDO("mysql:host=db;dbname=default;charset=utf8", "root", "root");
-      $q = $pdo->prepare("SELECT * FROM `q` WHERE CHAR_LENGTH(answer) = :LENGTH ORDER BY RAND() LIMIT 1");
+      // primary: MySQL (docker-compose db). Fallback: SQLite, so the quiz
+      // also runs in the browser playground (php-wasm has no MySQL server,
+      // but pdo_sqlite is available) — the question bank is seeded from
+      // default.sql on first use.
+      try {
+        $pdo = new PDO("mysql:host=db;dbname=default;charset=utf8", "root", "root");
+      } catch (PDOException $e) {
+        $pdo = kh_sqlite_db();
+      }
+      $q = $pdo->prepare("SELECT * FROM q WHERE CHAR_LENGTH(answer) = :LENGTH ORDER BY RANDOM() LIMIT 1");
       $q->execute([":LENGTH" => $level + 3]);
       $data = $q->fetch();
 
@@ -100,4 +108,29 @@ function getQuestion($level) {
     );
   }
 
+}
+
+
+/**
+ * SQLite fallback for the in-browser PHP runtime (php-wasm): builds
+ * keyword-hunter.sqlite from default.sql on first use. MySQL stays the
+ * primary backend when the app runs under docker-compose.
+ */
+function kh_sqlite_db()
+{
+    $dbPath = __DIR__ . "/keyword-hunter.sqlite";
+    $fresh = !file_exists($dbPath);
+    $pdo = new PDO("sqlite:" . $dbPath);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    if ($fresh) {
+        $pdo->exec("CREATE TABLE q (id INTEGER PRIMARY KEY, question TEXT NOT NULL, answer TEXT NOT NULL)");
+        $sql = file_get_contents(__DIR__ . "/default.sql");
+        if (preg_match_all("/\((\d+),\s*'((?:[^']|\\')*)',\s*'((?:[^']|\\')*)'\)/", $sql, $m, PREG_SET_ORDER)) {
+            $stmt = $pdo->prepare("INSERT INTO q (id, question, answer) VALUES (?, ?, ?)");
+            foreach ($m as $row) {
+                $stmt->execute([$row[1], str_replace("\'", "'", $row[2]), str_replace("\'", "'", $row[3])]);
+            }
+        }
+    }
+    return $pdo;
 }
