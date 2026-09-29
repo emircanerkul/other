@@ -82,10 +82,14 @@ function getQuestion($level) {
       // default.sql on first use.
       try {
         $pdo = new PDO("mysql:host=db;dbname=default;charset=utf8", "root", "root");
+        $lengthFn = "CHAR_LENGTH";
+        $randomFn = "RAND";
       } catch (PDOException $e) {
         $pdo = kh_sqlite_db();
+        $lengthFn = "LENGTH";
+        $randomFn = "RANDOM";
       }
-      $q = $pdo->prepare("SELECT * FROM q WHERE CHAR_LENGTH(answer) = :LENGTH ORDER BY RANDOM() LIMIT 1");
+      $q = $pdo->prepare("SELECT * FROM q WHERE {$lengthFn}(answer) = :LENGTH ORDER BY {$randomFn}() LIMIT 1");
       $q->execute([":LENGTH" => $level + 3]);
       $data = $q->fetch();
 
