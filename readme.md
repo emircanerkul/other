@@ -4,14 +4,17 @@ Pieces live-coded in [FoxDot](https://github.com/Qirky/FoxDot), played by the
 [SuperCollider](https://github.com/supercollider/supercollider) engine and
 rendered headlessly in Docker — no sound card involved.
 
-| Piece | Code | Listen | SoundCloud |
-| :--- | :---: | :---: | :---: |
-| **Almost Done** | [almost_done.py](pieces/almost_done.py) | [webm](audio/almost_done.webm?raw=true) · [mp3](audio/almost_done.mp3?raw=true) | [listen](https://soundcloud.com/emircanerkul/almost-done) |
-| **Insist** | [insist.py](pieces/insist.py) | [webm](audio/insist.webm?raw=true) · [mp3](audio/insist.mp3?raw=true) | [listen](https://soundcloud.com/emircanerkul/insist) |
-| **Stepfun5 AI's Taste** | [stepfun5_ais_taste.py](pieces/stepfun5_ais_taste.py) | [webm](audio/stepfun5_ais_taste.webm?raw=true) · [mp3](audio/stepfun5_ais_taste.mp3?raw=true) | [listen](https://soundcloud.com/emircanerkul/almost-done) |
+| Piece | Code | Listen |
+| :--- | :---: | :--- |
+| **Almost Done** | [almost_done.py](pieces/almost_done.py) | [webm](audio/almost_done.webm?raw=true) · [mp3](audio/almost_done.mp3?raw=true) · [soundcloud](https://soundcloud.com/emircanerkul/almost-done) |
+| **Insist** | [insist.py](pieces/insist.py) | [webm](audio/insist.webm?raw=true) · [mp3](audio/insist.mp3?raw=true) · [soundcloud](https://soundcloud.com/emircanerkul/insist) |
+| **Stepfun5 AI's Taste** | [stepfun5_ais_taste.py](pieces/stepfun5_ais_taste.py) | [webm](audio/stepfun5_ais_taste.webm?raw=true) · [mp3](audio/stepfun5_ais_taste.mp3?raw=true) |
 
-16 bars / 32 s each, 120 BPM in 4/4. The webm links play in the browser; the mp3s
-are there for older ones. WAV masters are regenerated, not committed.
+16 bars / 32 s each, 120 BPM in 4/4. The **webm** link is the one to click: GitHub
+serves it as `audio/webm`, so the browser plays it. The **mp3** is the fallback for
+older browsers — Chrome downloads it instead of playing it, because Chrome has no
+inline player for `audio/mpeg` on navigation. WAV masters are regenerated, not
+committed.
 
 ### Render it yourself
 
