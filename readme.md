@@ -6,9 +6,9 @@ rendered headlessly in Docker — no sound card involved.
 
 | Piece | Code | Listen |
 | :--- | :---: | :--- |
-| **Almost Done** | [almost_done.py](pieces/almost_done.py) | [webm](audio/almost_done.webm?raw=true) · [mp3](audio/almost_done.mp3?raw=true) · [soundcloud](https://soundcloud.com/emircanerkul/almost-done) |
-| **Insist** | [insist.py](pieces/insist.py) | [webm](audio/insist.webm?raw=true) · [mp3](audio/insist.mp3?raw=true) · [soundcloud](https://soundcloud.com/emircanerkul/insist) |
-| **Stepfun5 AI's Taste** | [stepfun5_ais_taste.py](pieces/stepfun5_ais_taste.py) | [webm](audio/stepfun5_ais_taste.webm?raw=true) · [mp3](audio/stepfun5_ais_taste.mp3?raw=true) |
+| **Almost Done** | [almost_done.py](pieces/almost_done.py) | [webm](https://github.com/emircanerkul/other/raw/refs/heads/project/foxdot-music-synthesis/audio/almost_done.webm) · [mp3](https://github.com/emircanerkul/other/raw/refs/heads/project/foxdot-music-synthesis/audio/almost_done.mp3) · [soundcloud](https://soundcloud.com/emircanerkul/almost-done) |
+| **Insist** | [insist.py](pieces/insist.py) | [webm](https://github.com/emircanerkul/other/raw/refs/heads/project/foxdot-music-synthesis/audio/insist.webm) · [mp3](https://github.com/emircanerkul/other/raw/refs/heads/project/foxdot-music-synthesis/audio/insist.mp3) · [soundcloud](https://soundcloud.com/emircanerkul/insist) |
+| **Stepfun5 AI's Taste** | [stepfun5_ais_taste.py](pieces/stepfun5_ais_taste.py) | [webm](https://github.com/emircanerkul/other/raw/refs/heads/project/foxdot-music-synthesis/audio/stepfun5_ais_taste.webm) · [mp3](https://github.com/emircanerkul/other/raw/refs/heads/project/foxdot-music-synthesis/audio/stepfun5_ais_taste.mp3) |
 
 16 bars / 32 s each, 120 BPM in 4/4. The **webm** link is the one to click: GitHub
 serves it as `audio/webm`, so the browser plays it. The **mp3** is the fallback for
