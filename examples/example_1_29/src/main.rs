@@ -402,3 +402,83 @@ fn example_1() {
         .expect("did not enter a correct string");
     println!("Hello, world! {}! {}", &name, &greeting);
 }
+
+fn main() {
+    // Run one learning example at a time. The wasm playground sets
+    // EXAMPLE_NO (e.g. "7"); without it, all examples run in order like the
+    // original `cargo run`. example_1 needs stdin — under emscripten the
+    // shell feeds it from the prompt box (see scratch/rust-playground-src).
+    let picked: Option<u32> = std::env::var("EXAMPLE_NO")
+        .ok()
+        .and_then(|v| v.trim().parse().ok());
+    match picked {
+        Some(n) if (1..=29).contains(&n) => run_one(n),
+        Some(other) => println!("No example {} in this crate (runs 1..=29)", other),
+        None => {
+    example_1();
+    example_2();
+    example_3();
+    example_4();
+    example_5();
+    example_6();
+    example_7();
+    example_8();
+    example_9();
+    example_10();
+    example_11();
+    example_12();
+    example_13();
+    example_14();
+    example_15();
+    example_16();
+    example_17();
+    example_18();
+    example_19();
+    example_20();
+    example_21();
+    example_22();
+    example_23();
+    example_24();
+    example_25();
+    example_26();
+    example_27();
+    example_28();
+    example_29();
+        }
+    }
+}
+
+fn run_one(n: u32) {
+    match n {
+        1 => example_1(),
+        2 => example_2(),
+        3 => example_3(),
+        4 => example_4(),
+        5 => example_5(),
+        6 => example_6(),
+        7 => example_7(),
+        8 => example_8(),
+        9 => example_9(),
+        10 => example_10(),
+        11 => example_11(),
+        12 => example_12(),
+        13 => example_13(),
+        14 => example_14(),
+        15 => example_15(),
+        16 => example_16(),
+        17 => example_17(),
+        18 => example_18(),
+        19 => example_19(),
+        20 => example_20(),
+        21 => example_21(),
+        22 => example_22(),
+        23 => example_23(),
+        24 => example_24(),
+        25 => example_25(),
+        26 => example_26(),
+        27 => example_27(),
+        28 => example_28(),
+        29 => example_29(),
+        _ => unreachable!(),
+    }
+}

@@ -7,6 +7,7 @@ use std::{
     time::Duration,
 };
 
+#[cfg(not(target_family = "wasm"))]
 fn example_39() {
     pub struct Bank {
         balance: f32,
@@ -49,6 +50,7 @@ fn example_39() {
     println!("Final balance: {}", bank.lock().unwrap().balance);
 }
 
+#[cfg(not(target_family = "wasm"))]
 fn example_38() {
     let thread1 = thread::spawn(|| {
         for i in 1..24 {
@@ -145,4 +147,21 @@ fn example_32() {
     }
     let mut iter1: Iter<i32> = arr_it.iter();
     println!("{:?}", iter1.next());
+}
+
+fn main() {
+    #[cfg(not(target_family = "wasm"))]
+    example_38();
+    #[cfg(target_family = "wasm")]
+    println!("(example_38: threads are not available in the browser wasm runtime — skipped)");
+    example_37();
+    example_36();
+    example_35();
+    example_34();
+    example_33();
+    example_32();
+    #[cfg(not(target_family = "wasm"))]
+    example_39();
+    #[cfg(target_family = "wasm")]
+    println!("(example_39: threads are not available in the browser wasm runtime — skipped)");
 }
