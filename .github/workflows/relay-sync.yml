@@ -1,0 +1,14 @@
+# Relay: pushes to this project branch rebuild the aggregated portal.
+# Calls the shared aggregate workflow on tooling (reusable workflow) — no tokens needed.
+name: relay-sync
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  relay:
+    uses: emircanerkul/other/.github/workflows/aggregate.yml@tooling
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+      actions: read

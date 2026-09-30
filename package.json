@@ -1,0 +1,17 @@
+{
+  "name": "other-aggregator",
+  "private": true,
+  "type": "module",
+  "description": "Aggregates project/* branches into a static GitHub Pages bundle with a browser-side WASM PHP playground",
+  "scripts": {
+    "build:phpwasm": "node scratch/build-phpwasm.mjs",
+    "aggregate": "node scratch/aggregate.mjs",
+    "aggregate:full": "node scratch/aggregate.mjs --with-builds --with-php"
+  },
+  "devDependencies": {
+    "@php-wasm/universal": "3.1.56",
+    "@php-wasm/web": "3.1.56",
+    "esbuild": "0.25.10"
+  },
+  "engines": { "node": ">=20" }
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/png" href="../favicon.png">
+<title>running…</title>
+<style>
+  body { font-family: ui-monospace, monospace; margin: 0; padding: 1rem; background: #fff; color: #222; }
+  #out { white-space: pre-wrap; word-break: break-word; font-size: .9rem; line-height: 1.5; }
+  #inputRow { display: none; margin-top: 1rem; }
+  #inputRow input { width: 60%; padding: .4rem; font-family: inherit; }
+  #inputRow button { padding: .4rem .8rem; }
+</style>
+</head>
+<body>
+<div id="out"></div>
+<div id="inputRow">
+  <input id="stdin" placeholder="type input for the program…">
+  <button id="send">Send</button>
+</div>
+<script>
+  const params = new URLSearchParams(location.search);
+  const ex = params.get('ex');
+  document.title = 'running ' + ex;
+  const outEl = document.getElementById('out');
+  const inputRow = document.getElementById('inputRow');
+  const stdinInput = document.getElementById('stdin');
+  let lineBuffer = '';
+  let waitingResolver = null;
+
+  function write(text) {
+    lineBuffer += text;
+    const lines = lineBuffer.split('\n');
+    lineBuffer = lines.pop();
+    for (const l of lines) {
+      outEl.textContent += l + '\n';
+      // example_1 prints a prompt then blocks on stdin — show the input row
+      if (/name|girdi|input/i.test(l) && !inputRow.style.display) inputRow.style.display = 'block';
+    }
+  }
+
+  function flush() { if (lineBuffer) { outEl.textContent += lineBuffer; lineBuffer = ''; } }
+
+  window.readLine = () => new Promise(resolve => {
+    inputRow.style.display = 'block';
+    stdinInput.focus();
+    waitingResolver = resolve;
+  });
+  document.getElementById('send').onclick = sendInput;
+  stdinInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendInput(); });
+  function sendInput() {
+    if (!waitingResolver) return;
+    const v = stdinInput.value;
+    stdinInput.value = '';
+    outEl.textContent += v + '\n';
+    const r = waitingResolver; waitingResolver = null;
+    inputRow.style.display = 'none';
+    r(v);
+  }
+
+  const script = document.createElement('script');
+  script.src = `./examples/${ex}.js?v=${Date.now()}`;
+  // EXAMPLE_NO picks a single learning example inside the crate (the runner
+  // in project/rust-first-step reads it); absent → all examples run in order.
+  // The glue declares `var ENV = {}` internally and Rust's std::rt caches the
+  // environment during runtime init — BEFORE any onload hook can run — so we
+  // inject the var through a preRun hook, which executes before initRuntime.
+  const n = params.get('n');
+  window.Module = {
+    noInitialRun: false,
+    print: (t) => write(t + '\n'),
+    printErr: (t) => write('[stderr] ' + t + '\n'),
+    // emscripten's read (stdin) — the glue calls prompt() by default; route
+    // through our promise-based input row is async, which the sync shell
+    // can't await — so pre-feed via prompt() fallback:
+    prompt: (text) => window.prompt(text || 'input:')
+  };
+  if (n) Module.preRun = () => { ENV.EXAMPLE_NO = n; };
+  script.onload = () => { flush(); document.title = `example ${n || ex} — done`; };
+  document.body.appendChild(script);
+</script>
+</body>
+</html>

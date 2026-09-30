@@ -1,0 +1,110 @@
+# Builds the static bundle from all project/* branches and publishes it to GitHub Pages.
+# PHP apps run fully client-side (browser WASM) — no tokens, no accounts required.
+# Tooling lives on the `tooling` branch; `master` and `gh-pages` both hold the
+# generated portal (master is the repo landing page, gh-pages is the Pages source).
+name: aggregate
+on:
+  push:
+    branches: [tooling]
+  workflow_dispatch:
+  workflow_call:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # reusable-workflow runs check out the CALLER's ref by default —
+      # pin to tooling so the aggregator tooling itself is always present
+      - uses: actions/checkout@v4
+        with:
+          ref: tooling
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetch all project branches (shallow)
+        run: git fetch --depth=1 origin '+refs/heads/project/*:refs/remotes/origin/project/*'
+      - name: Install tooling (esbuild + php-wasm)
+        run: npm ci --no-audit --no-fund
+      - name: Install Rust + emsdk (for the rust playground wasm build)
+        run: |
+          rustup target add wasm32-unknown-emscripten
+          git clone --depth 1 https://github.com/emscripten-core/emsdk.git /tmp/emsdk
+          /tmp/emsdk/emsdk install latest
+          /tmp/emsdk/emsdk activate latest
+          echo "/tmp/emsdk/upstream/emscripten" >> $GITHUB_PATH
+      - name: Aggregate all branches (+ builds + PHP playground)
+        run: node scratch/aggregate.mjs --with-builds --with-php
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sites-bundle
+          path: sites/
+          retention-days: 1
+          # .htaccess/.ddev/.github files are part of the apps (manifests list
+          # them) — without this flag upload-artifact silently drops dotfiles
+          include-hidden-files: true
+  # Deploy on tooling pushes. The bundle lands on master, which is BOTH the
+  # repo landing page (generated README + browsable bundle) AND the Pages
+  # source. Deploying via the peaceiris publish_branch flow is hard-blocked
+  # for master→master ("This operation is prohibited"), but a plain git push
+  # with the workflow GITHUB_TOKEN works fine.
+  deploy:
+    needs: build
+    if: ${{ github.ref == 'refs/heads/tooling' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download built bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: sites-bundle
+          path: sites
+      - name: Push bundle to master (landing page + Pages source)
+        run: |
+          git clone --depth=1 --branch=master "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" master-push
+          cd master-push
+          git config user.name "emircanerkul"
+          git config user.email "emircanerkul@users.noreply.github.com"
+          git rm -rfq . 2>/dev/null || true
+          cp -R ../sites/. .
+          git add -A
+          git commit -m "deploy: portal build ${{ github.run_id }}" --allow-empty
+          git push origin master
+
+  # Optional static mirror on Wasmer Edge — runs only when WASMER_TOKEN is set
+  # as a repository secret. Everything else is token-free.
+  # NOTE: `env` context is not available in a job-level `if` — the presence
+  # check must live in a step (gate) and the rest condition on its output.
+  wasmer-static-mirror:
+    needs: build
+    if: ${{ github.ref == 'refs/heads/tooling' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for WASMER_TOKEN
+        id: gate
+        env:
+          WASMER_TOKEN: ${{ secrets.WASMER_TOKEN }}
+        run: echo "present=$(test -n "$WASMER_TOKEN" && echo yes || echo no)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.present == 'yes'
+      - uses: actions/download-artifact@v4
+        if: steps.gate.outputs.present == 'yes'
+        with:
+          name: sites-bundle
+          path: sites
+      - name: Install Wasmer CLI
+        if: steps.gate.outputs.present == 'yes'
+        run: curl -fsSL https://get.wasmer.io | sh
+      - name: Deploy static mirror to Wasmer Edge
+        if: steps.gate.outputs.present == 'yes'
+        env:
+          WASMER_TOKEN: ${{ secrets.WASMER_TOKEN }}
+        run: wasmer deploy --token "$WASMER_TOKEN" --no-publish --dir sites

@@ -1,0 +1,6 @@
+node_modules/
+sites/
+.work/
+*.zip.tmp
+.DS_Store
+scratch/packs/

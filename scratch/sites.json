@@ -1,0 +1,217 @@
+{
+  "branchPrefix": "project/",
+  "branchSource": "origin",
+  "phpPlayground": {
+    "enabled": true,
+    "runtime": "7.4",
+    "url": "./php-playground/",
+    "experimentalKinds": [
+      "symfony"
+    ]
+  },
+  "branches": {
+    "augmented-reality": {
+      "title": "Augmented Reality",
+      "mode": "static"
+    },
+    "bilimsel-hazirlik-not-hesaplama": {
+      "title": "Bilimsel Haz\u0131rl\u0131k Not Hesaplama",
+      "mode": "static"
+    },
+    "computer-vision-companies": {
+      "title": "Computer Vision Companies",
+      "mode": "static"
+    },
+    "data-visualization": {
+      "title": "Data Visualization",
+      "mode": "build",
+      "build": {
+        "cmd": "npm ci && npx vite build",
+        "out": "dist"
+      }
+    },
+    "drupal-mind-map": {
+      "title": "Drupal Mind Map",
+      "mode": "static",
+      "dir": "docs"
+    },
+    "ipd": {
+      "title": "IPD",
+      "mode": "static",
+      "dir": "docs"
+    },
+    "kisisel-web-sitesi": {
+      "title": "Ki\u015fisel Web Sitesi",
+      "mode": "static"
+    },
+    "old-personal-website": {
+      "title": "Old Personal Website",
+      "mode": "static",
+      "dir": "docs"
+    },
+    "personal-web-page": {
+      "title": "Personal Web Page",
+      "mode": "static"
+    },
+    "qgen-exam-generator": {
+      "title": "QGen Exam Generator",
+      "mode": "static"
+    },
+    "rpg-game-development-adventure": {
+      "title": "RPG Game Development Adventure",
+      "mode": "static",
+      "dir": "dist"
+    },
+    "threejs-web-design-sample": {
+      "title": "Three.js Web Design Sample",
+      "mode": "static",
+      "dir": "docs"
+    },
+    "cvgen": {
+      "title": "CV Generator",
+      "mode": "static",
+      "entry": "index.html",
+      "php": {
+        "kind": "plain",
+        "entry": "index.html"
+      }
+    },
+    "domain-checker": {
+      "title": "Domain Checker",
+      "mode": "static",
+      "entry": "index.html",
+      "php": {
+        "kind": "plain",
+        "entry": "index.html"
+      }
+    },
+    "keyword-hunter": {
+      "title": "Keyword Hunter",
+      "mode": "static",
+      "entry": "index.php",
+      "php": {
+        "kind": "plain",
+        "entry": "index.php"
+      }
+    },
+    "ip-logger": {
+      "title": "IP Logger",
+      "mode": "dir",
+      "dir": "dashboard",
+      "php": {
+        "kind": "plain",
+        "entry": "dashboard/index.html"
+      }
+    },
+    "cool-text": {
+      "title": "Cool Text",
+      "mode": "build",
+      "build": {
+        "cmd": "npm install --no-audit --no-fund --no-save && npx vite build",
+        "out": "dist"
+      }
+    },
+    "elitegamers": {
+      "title": "Elitegamers",
+      "mode": "build",
+      "build": {
+        "cmd": "export NODE_OPTIONS=\"--openssl-legacy-provider --max-old-space-size=6144\" && npm ci --no-audit --no-fund --ignore-scripts && npm run build --ignore-scripts",
+        "out": "src/.vuepress/dist"
+      }
+    },
+    "stencil-first-step": {
+      "title": "Stencil First Step",
+      "mode": "build",
+      "build": {
+        "cmd": "PUPPETEER_SKIP_DOWNLOAD=true npm install --no-audit --no-fund && npm run build",
+        "out": "www"
+      }
+    },
+    "angular-quotes-app": {
+      "title": "Angular Quotes App",
+      "mode": "build",
+      "build": {
+        "cmd": "export NODE_OPTIONS=\"--openssl-legacy-provider --max-old-space-size=6144\" && mkdir -p src/environments && echo ZXhwb3J0IGNvbnN0IGVudmlyb25tZW50ID0gewogIHByb2R1Y3Rpb246IGZhbHNlLAogIGZpcmViYXNlOiB7CiAgICBhcGlLZXk6ICdBSXplU3lDaU1QSm9hNUpCUkxueDhfMmJJSHZ5MWlwM015QXdPLUEnLAogICAgYXV0aERvbWFpbjogJ3F1b3Rlcy5maXJlYmFzZWFwcC5jb20nLAogICAgZGF0YWJhc2VVUkw6ICdodHRwczovL3F1b3Rlcy5maXJlYmFzZWlvLmNvbScsCiAgICBwcm9qZWN0SWQ6ICdxdW90ZXMnLAogICAgc3RvcmFnZUJ1Y2tldDogJ3F1b3Rlcy5hcHBzcG90LmNvbScsCiAgICBtZXNzYWdpbmdTZW5kZXJJZDogJzMyMTIxNzI0ODc3NScsCiAgICBhcHBJZDogJzE6MzIxMjE3MjQ4Nzc1OndlYjpramUwZGUwMjMxMGYyZDkyN3ZkYTEzJywKICAgIG1lYXN1cmVtZW50SWQ6ICdHLTQ0N01ISEw3WjknCiAgfQp9Owo= | base64 -d > src/environments/environment.ts && echo ZXhwb3J0IGNvbnN0IGVudmlyb25tZW50ID0gewogIHByb2R1Y3Rpb246IHRydWUsCiAgZmlyZWJhc2U6IHsKICAgIGFwaUtleTogJ0FJemVTeUNpTVBKb2E1SkJSTG54OF8yYklIdnkxaXAzTXlBd08tQScsCiAgICBhdXRoRG9tYWluOiAncXVvdGVzLmZpcmViYXNlYXBwLmNvbScsCiAgICBkYXRhYmFzZVVSTDogJ2h0dHBzOi8vcXVvdGVzLmZpcmViYXNlaW8uY29tJywKICAgIHByb2plY3RJZDogJ3F1b3RlcycsCiAgICBzdG9yYWdlQnVja2V0OiAncXVvdGVzLmFwcHNwb3QuY29tJywKICAgIG1lc3NhZ2luZ1NlbmRlcklkOiAnMzIxMjE3MjQ4Nzc1JywKICAgIGFwcElkOiAnMTozMjEyMTcyNDg3NzU6d2ViOmtqZTBkZTAyMzEwZjJkOTI3dmRhMTMnLAogICAgbWVhc3VyZW1lbnRJZDogJ0ctNDQ3TUhITDdaOScKICB9Cn07Cg== | base64 -d > src/environments/environment.prod.ts && printf '%s' '{\"extends\":\"./tsconfig.app.json\",\"angularCompilerOptions\":{\"fullTemplateTypeCheck\":false,\"strictInjectionParameters\":true}}' > tsconfig.ci.json && npm ci --legacy-peer-deps --no-audit --no-fund && npm install --no-save --no-audit --no-fund @babel/compat-data@7.8.6 && npx ng build --configuration production --ts-config tsconfig.ci.json",
+        "out": "www"
+      }
+    },
+    "api-platform-weather-api": {
+      "title": "API Platform Weather API",
+      "mode": "php",
+      "php": {
+        "kind": "symfony",
+        "entry": "public/index.php",
+        "docroot": "api"
+      },
+      "packed": "weather-api-pack.zip"
+    },
+    "php-trait-showroom": {
+      "title": "PHP Trait Showroom",
+      "mode": "archive",
+      "php": {
+        "kind": "symfony",
+        "entry": "public/index.php"
+      }
+    },
+    "symfony-first-step": {
+      "title": "Symfony First Step",
+      "mode": "archive",
+      "php": {
+        "kind": "symfony",
+        "entry": "public/index.php"
+      }
+    },
+    "drupal-first-step": {
+      "title": "Drupal First Step",
+      "mode": "archive"
+    },
+    "drupal-tome-blog": {
+      "title": "Drupal Tome Blog",
+      "mode": "archive"
+    },
+    "drupal-design-systems": {
+      "title": "Drupal Design Systems",
+      "mode": "archive"
+    },
+    "android-serversocket": {
+      "title": "Android Server Socket",
+      "mode": "archive"
+    },
+    "drupal-gin-toolbar-extension": {
+      "title": "Drupal Gin Toolbar Extension",
+      "mode": "archive"
+    },
+    "drupal-to-md": {
+      "title": "Drupal to Markdown",
+      "mode": "archive"
+    },
+    "foxdot-music-synthesis": {
+      "title": "FoxDot Music Synthesis",
+      "mode": "archive"
+    },
+    "gamificate-image": {
+      "title": "Gamificate Image",
+      "mode": "archive"
+    },
+    "psd-to-html": {
+      "title": "PSD to HTML",
+      "mode": "archive"
+    },
+    "coolify-aws-sam-app": {
+      "title": "Coolify AWS SAM App",
+      "mode": "archive"
+    },
+    "audacious-player": {
+      "title": "Audacious Player (Raycast)",
+      "mode": "placeholder"
+    },
+    "codegrepper": {
+      "title": "CodeGrepper",
+      "mode": "placeholder"
+    },
+    "rust-first-step": {
+      "title": "Rust First Step",
+      "mode": "rust"
+    }
+  }
+}
