@@ -1,0 +1,7 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[71],{199:function(t,e,n){"use strict";
+/**
+ * vue-global-events v1.2.1
+ * (c) 2020 Damian Dulisz <damian.dulisz@gmail.com>, Eduardo San Martin Morote <posva13@gmail.com>
+ * @license MIT
+ */
+var i;n.r(e);var r=/^[~!&]*/,s=/\W+/,a={"!":"capture","~":"once","&":"passive"};function c(t){var e=t.match(r)[0];return(null==i?i=/msie|trident/.test(window.navigator.userAgent.toLowerCase()):i)?e.indexOf("!")>-1:e.split("").reduce((function(t,e){return t[a[e]]=!0,t}),{})}var o={name:"GlobalEvents",props:{target:{type:String,default:"document"},filter:{type:Function,default:function(t){return!0}}},data:function(){return{isActive:!0}},activated:function(){this.isActive=!0},deactivated:function(){this.isActive=!1},render:function(t){return t()},mounted:function(){var t=this;this._listeners=Object.create(null),Object.keys(this.$listeners).forEach((function(e){var n=t.$listeners[e],i=function(i){t.isActive&&t.filter(i,n,e)&&n(i)};window[t.target].addEventListener(e.replace(s,""),i,c(e)),t._listeners[e]=i}))},beforeDestroy:function(){for(var t in this._listeners)window[this.target].removeEventListener(t.replace(s,""),this._listeners[t],c(t))}};e.default=o}}]);

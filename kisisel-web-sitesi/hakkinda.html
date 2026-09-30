@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öz Geçmiş | Emircan ERKUL</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/form.css">
+    <style>
+        form.edit label {
+           display: none;
+        }
+        form:not(.edit) textarea{
+            display: none;
+        }
+        label {
+            margin-bottom: 10px;
+            display: block;
+            line-height: 1.6em;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles"></div>
+    <div id="up">⇑</div>
+
+    <div class="container">
+        <iframe id="header" width="100%" height="100%" src="header.html" frameborder="0"></iframe>
+        <article>
+            <form action="#">
+                <input type="reset" value="Düzenle / Vazgeç">
+                <div>
+                    <label></label>
+                    <textarea id="ignorePDF" rows="3">Emircan ERKUL<br>Software Developer<br>contact@emircanerkul.com </textarea>
+                </div>
+                <div>
+                    <label></label>
+                    <textarea id="ignorePDF" rows="3">Personal Profile<br>I am a multipotential who is loves research and has adopted the principle of lifelong learning. I spend my time and energy for personal and technical development. Reading a book or have a lot of knowledge is not a success unless you meet the needs of others. I am able to produce value in the sector. In 2015, i entered this sector as Freelancer. This choice not only to advanced me in the field of technical training, also improved me in customer relations</textarea>
+                </div>
+                <div>
+                    <label></label>
+                    <textarea id="ignorePDF" rows="3">Work Experience<br>Sed maximus neque a nibh volutpat lobortis. Suspendisse cursus dignissim nibh quis elementum. Sed pulvinar nisl at diam pharetra sodales. Class aptent taciti sociosqu ad litora torquent per conubia nostra</textarea>
+                </div>
+                <div>
+                    <label></label>
+                    <textarea id="ignorePDF" rows="3">Key Skills<br>Html, css, js, php, java</textarea>
+                </div>
+                <div>
+                    <label></label>
+                    <textarea id="ignorePDF" rows="3">Projects<br>Vestibulum interdum mattis nisi eu pretium. Vestibulum leo neque, eleifend ornare diam eget, finibus malesuada nisl. Nunc cursus nibh porttitor leo faucibus laoreet. Curabitur risus sapien, feugiat sollicitudin nulla quis, consectetur venenatis augue. Donec nec viverra nulla. Duis porttitor, sapien eu consectetur aliquet, neque neque condimentum diam, sit amet aliquam ligula lectus nec lorem. Vivamus eget accumsan ipsum. Nulla facilisi. Praesent maximus massa ligula</textarea>
+                </div>
+                <div>
+                    <label></label>
+                    <textarea id="ignorePDF" rows="3">Education<br>Kocaeli University<br>Bachelor's Degree, Information Systems Engineering (2017 - 2022)</textarea>
+                </div>
+
+                <input type="submit" value="Yazdır">
+            </form>
+        </article>
+        <iframe id="footer" width="100%" height="100%" src="footer.html"
+            frameborder="0"></iframe>
+    </div>
+    <script src="assets/js/jquery-3.5.1.js"></script>
+    <script src="assets/js/particles.min.js"></script>
+    <script src="assets/js/jspdf.debug.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        $("form > div").each(function(i,v){
+            $(this).find("label").html($(this).find("textarea").val())
+        });
+
+        $("textarea").keyup(function () {
+            $(this).parent().find("label").html($(this).val());
+        });
+
+        $("form").on('submit', function (event) {
+            var doc = new jsPDF();
+            var elementHTML = $('form').html();
+            var specialElementHandlers = {
+                '#ignorePDF': function (element, renderer) {
+                    return true;
+                }
+            };
+            doc.fromHTML(elementHTML, 15, 15, {
+                'width': 170,
+                'elementHandlers': specialElementHandlers
+            });
+
+            doc.save('oz-gecmis.pdf');
+            event.preventDefault();
+        });
+
+        $("form").on('reset', function (event) {
+            $("form").toggleClass("edit");
+            event.preventDefault();
+        });
+    </script>
+</body>
+
+</html>

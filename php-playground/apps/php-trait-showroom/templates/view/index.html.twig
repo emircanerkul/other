@@ -1,0 +1,31 @@
+{# templates/admin/my-custom-page.html.twig #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block main %}
+    <div class="d-flex gap-4 flex-column">
+        {% for trait in traits %}
+            <div class="bg-light p-5 rounded">
+                <pre><code class="language-php">{{ trait.code }}</code></pre>
+            </div>
+        {% endfor %}
+    </div>
+
+    <style>
+        pre {
+            overflow-y: scroll;
+            max-height: 200px;
+            display: grid;
+        }
+    </style>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((el) => {
+                hljs.highlightElement(el);
+            });
+        });
+    </script>
+{% endblock %}

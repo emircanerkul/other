@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="tr">
+    <meta charset="UTF-8">
+    <title>IP Logger</title>
+
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/skeleton.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div id="header" class="row">
+            <div id="logo"></div>
+        </div>
+
+        <div id="content" class="row">
+            <div class="three columns">
+                <div class="row">
+
+                    <div class="three columns">
+                        <button disabled="disabled" id="backList" class="button button-thema u-full-width">
+                            <i class="fa fa-backward"></i>
+                        </button>
+                    </div>
+                    <div class="nine columns">
+                        <button class="button button-thema u-full-width" style="pointer-events: none;">Welcome</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <ul id="folderList"></ul>
+                    <ul id="dataList" style="display: none"></ul>
+                </div>
+            </div>
+
+            <div class="nine columns logs">
+                <div class="row"></div>
+            </div>
+        </div>
+
+        <div id="footer" class="row">I
+            <span style="color:#ea4335">❤</span> Open Source</div>
+    </div>
+    <script src="assets/js/jquery-2.1.4.min.js"></script>
+    <script src="assets/js/jquery.base64.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

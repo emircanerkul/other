@@ -1,0 +1,234 @@
+@import "variables";
+@import "global";
+body {
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s;
+}
+
+header {
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    .top {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 2em;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        line-height: 1em;
+        filter: invert(12%) sepia(51%) saturate(619%) hue-rotate(227deg) brightness(89%) contrast(96%);
+        p {
+            max-width: 200px;
+            text-align: left;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        &::before {
+            content: "";
+            display: block;
+            background-image: url(../img/logo.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 128px;
+            width: 128px;
+        }
+    }
+
+    ul.social {
+        list-style: none;
+        li {
+            float: left;
+            padding: 0 5px;
+            a {
+                transition: all 0.3s;
+                svg {
+                    fill: $color_primary;
+                    width: 24px;
+                    height: 24px;
+                }
+                &:hover {
+                    svg {
+                        fill: darken($color_primary, 20);
+                    }
+                }
+            }
+        }
+    }
+
+    nav {
+        margin-top: 20px;
+        & > ul {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+
+            & > li {
+                transition: all 0.3s;
+                position: relative;
+                float: left;
+                display: flex;
+                overflow: hidden;
+
+                &#about {
+                    & > a {
+                        width: 190px;
+                    }
+                }
+
+                a {
+                    text-align: center;
+                    border: solid 2px $color_primary;
+                    font-weight: bold;
+                    padding: 10px 30px;
+                    background-color: $color_primary;
+                    color: #fff;
+                }
+
+                ul {
+                    padding: 0;
+                    list-style: none;
+                    display: flex;
+                    justify-content: space-between;
+                    width: -webkit-fill-available;
+                    position: absolute;
+                    display: none;
+                    flex-direction: column;
+
+                    border: solid 2px $color_primary;
+                    height: 38px;
+                    li {
+                        transition: all 0.3s;
+                        position: relative;
+                        float: left;
+                        display: flex;
+                        overflow: hidden;
+                        padding: 0 !important;
+                        margin: 0 !important;
+
+                        a {
+                            padding: 10px 3px;
+                            border: none;
+                            padding-left: 5px;
+                            padding-right: 5px;
+                            width: 100px;
+                            &:hover {
+                                background-color: $color_primary;
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+
+                &:not(:first-child) {
+                    margin-left: 20px;
+                }
+                &::before,
+                &::after {
+                    content: "";
+                    width: 32px;
+                    height: 32px;
+                    background-color: #fff;
+                    display: block;
+                    position: absolute;
+                    border: solid 2px $color_primary;
+                    z-index: 9;
+                    pointer-events: none;
+                    -webkit-animation: spin 4s linear infinite;
+                    -moz-animation: spin 4s linear infinite;
+                    animation: spin 4s linear infinite;
+                }
+                &::before {
+                    top: -11px;
+                    left: -26px;
+                }
+
+                &::after {
+                    bottom: -24px;
+                    right: -8px;
+                }
+
+                &:hover {
+                    &#about > a {
+                        visibility: hidden;
+                    }
+                    &::before,
+                    &::after {
+                        border-color: #fff;
+                        background-color: $color_primary;
+                    }
+                    a {
+                        background-color: #fff;
+                        color: #333;
+                    }
+                    ul {
+                        display: flex;
+                        flex-direction: row;
+                    }
+                }
+            }
+        }
+    }
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    header nav > ul > li::before,
+    header nav > ul > li::after {
+        content: none;
+    }
+    header nav > ul > li {
+        white-space: nowrap;
+        padding: 10px;
+    }
+    header nav>ul>li:hover a{
+        background-color: initial;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header nav>ul {
+        flex-direction: column;
+    }
+
+    header nav>ul>li{
+        padding: 0!important;
+        margin: 5px 0!important;
+        width: 100%;
+    }
+
+    header nav>ul>li a{
+        width: 100%!important;
+    }
+
+    header ul.social{
+        flex-direction: column;
+        display: flex;
+    }
+}

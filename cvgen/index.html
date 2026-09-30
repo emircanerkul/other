@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CVGEN | Customizable CV Generator</title>
+
+    <link rel="stylesheet" href="assets/css/nano.min.css" />
+    <script src="assets/js/pickr.min.js"></script>
+    <script src="assets/js/pickr.es5.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="icon" type="image/png" href="favicon.png" />
+</head>
+<body>
+    <div id="loader">
+        <div></div>
+        <div></div>
+    </div>
+    <div class="container">
+        <div class="header">
+            Customizable CV Generator
+        </div>
+        <div class="content">
+            <p>Create specific resume for each target firms. Firstly decide which position do you want. Secondly select
+                your strategy according to the time allocated by the target firm then select your resume primary color
+                and resume template for free. (I suggest select resume's primary color like your target firm's website's
+                primary color)</p>
+
+            <form action="#">
+                <div class="row">
+                    <select id="profile">
+                        <option value="-1" disabled selected>Profile</option>
+                    </select>
+
+                    <select id="strategy">
+                        <option value="-1" disabled selected>Strategy</option>
+                        <option value="0">Important</option>
+                        <option value="1">Detailed</option>
+                    </select>
+
+                    <select id="privacy">
+                        <option value="-1" disabled selected>Privacy</option>
+                        <option value="0">Hide Image</option>
+                        <option value="1">Show Image</option>
+                    </select>
+                    <input id="color" class="color-picker" type="color">
+                </div>
+
+                <div class="row">
+                    <div class="cards"></div>
+                </div>
+            </form>
+            <button id="generate">Generate & Download</button>
+        </div>
+    </div>
+    <div class="footer"> I ♥️ OpenSource</div>
+
+    <video autoplay muted loop id="background">
+        <source src="assets/video/background.mp4" type="video/mp4">
+    </video>
+    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+
+            const pickr = Pickr.create({
+                el: '.color-picker',
+                theme: 'nano',
+
+                swatches: [
+                    '#E56284',
+                    '#8B83D7',
+                    '#35BFAéE',
+                    '#F7C056',
+                    '#EC6851',
+                ],
+
+                defaultRepresentation: 'HEXA',
+                components: {
+                    preview: true,
+                    opacity: true,
+                    hue: true,
+
+                    interaction: {
+                        hex: false,
+                        rgba: false,
+                        hsva: false,
+                        input: true,
+                        clear: true,
+                        save: true
+                    }
+                }
+            });
+
+            pickr.on('save', () => {
+                $("select").change();
+            });
+
+            $.ajax({
+                url: "core/ajax.php",
+                type: "get",
+                data: { "get": "profile_list" },
+                success: function (response) {
+                    $(JSON.parse(response)).each((i, v) => {
+                        $("select#profile").append($("<option>", {
+                            value: v,
+                            text: v
+                        }));
+                    });
+
+                    setTimeout(() => {
+                        $(".container").css("opacity", 1);
+                        $("#loader").remove();
+                    }, 1600);
+                }
+            });
+
+            $.ajax({
+                url: "core/ajax.php",
+                type: "get",
+                data: { "get": "template_list" },
+                success: function (response) {
+                    $(JSON.parse(response)).each((i, v) => {
+                        $(".cards").append(($("<div>", {
+                            "class": "card",
+                            "data-card": i
+                        })));
+
+                        $(".cards > div[data-card=" + i + "]").append($("<div>").css({
+                            position: "absolute",
+                            width: "100%",
+                            height: "100%",
+                            "z-index": "900",
+                            "background-image": "linear-gradient(to bottom, #0e0e0e00, #0e0e0e00, #0e0e0e00, white)"
+                        }));
+
+                        $(".cards > div[data-card=" + i + "]").append($("<iframe>", {
+                            template: v,
+                            src: "",
+                            frameborder: "0"
+                        }));
+                    });
+                }
+            });
+
+            $('select, input').change(function () {
+                $("iframe").each((i, e) => {
+                    $(e).attr('src', function (i, url) {
+                        var profile = $("select#profile :selected").val();
+                        var strategy = $("select#strategy :selected").val();
+                        var privacy = $("select#privacy :selected").val();
+                        var color = pickr.getColor().toHEXA().join('');
+
+                        if (profile == -1 || strategy == -1 || privacy == -1) return;
+
+                        return encodeURI("./core/ajax.php?get=template&t=" + e.getAttribute("template") + "&profile=" + profile + "&strategy=" + strategy + "&privacy=" + privacy + "&color=" + color);
+                    });
+                });
+            });
+
+            $('button#generate').click(function () {
+                if (formIsFilled())
+                    $.ajax({
+                        url: "core/ajax.php",
+                        type: "get",
+                        data: {
+                            "get": "generate",
+                            "url": $("div.card:nth-child(1) > iframe").attr("src")
+                        },
+                        success: function () {
+                            $.ajax({
+                                cache: false,
+                                type: 'POST',
+                                url: 'resume.pdf',
+                                contentType: false,
+                                processData: false,
+                                xhrFields: {
+                                    responseType: 'blob'
+                                },
+                                success: function (response, status, xhr) {
+                                    var filename = "Resume_" + (new Date()).getTime() + ".pdf";
+                                    var disposition = xhr.getResponseHeader('Content-Disposition');
+
+                                    if (disposition) {
+                                        var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                                        var matches = filenameRegex.exec(disposition);
+                                        if (matches !== null && matches[1]) filename = matches[1].replace(/['"]/g, '');
+                                    }
+                                    var linkelem = document.createElement('a');
+                                    try {
+                                        var blob = new Blob([response], { type: 'application/octet-stream' });
+
+                                        if (typeof window.navigator.msSaveBlob !== 'undefined') {
+                                            window.navigator.msSaveBlob(blob, filename);
+                                        } else {
+                                            var URL = window.URL || window.webkitURL;
+                                            var downloadUrl = URL.createObjectURL(blob);
+
+                                            if (filename) {
+                                                var a = document.createElement("a");
+
+                                                if (typeof a.download === 'undefined') {
+                                                    window.location = downloadUrl;
+                                                } else {
+                                                    a.href = downloadUrl;
+                                                    a.download = filename;
+                                                    var ref = document.body.appendChild(a);
+                                                    a.target = "_blank";
+                                                    a.click();
+                                                    ref.remove();
+                                                }
+                                            } else {
+                                                window.location = downloadUrl;
+                                            }
+                                        }
+                                    } catch (ex) {
+                                        console.log(ex);
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                setTimeout(() => {
+
+                }, 3000);
+            });
+
+            function formIsFilled() {
+                var filter = true;
+                $("select").each((i, e) => {
+                    if ($(e).val() == null) {
+                        filter = false;
+                        return;
+                    }
+                });
+
+                if (!filter) {
+                    alert("Please fill all area");
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+
+                return filter;
+            }
+
+            $('body').on("click", ".card", () => {
+                if (formIsFilled())
+                    $('.card:first-child').fadeOut(400, 'swing', function () {
+                        return $('.card:first-child').appendTo('.cards').hide();
+                    }).fadeIn(400, 'swing');
+            });
+        });
+    </script>
+</body>
+</html>

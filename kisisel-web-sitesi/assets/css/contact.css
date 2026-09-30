@@ -1,0 +1,3 @@
+input,select,textarea{box-sizing:border-box;width:100%;padding:12px;border:1px solid #ccc;margin-top:6px;margin-bottom:16px;resize:vertical}input[type="submit"]{background-color:#ff8e71;color:#fff;padding:12px 20px;border:none;cursor:pointer}input[type="submit"]:hover{background-color:#ff3d0b}@media screen and (max-width: 600px){.column,input[type="submit"]{width:100%;margin-top:0}}
+
+/*# sourceMappingURL=contact.css.map */

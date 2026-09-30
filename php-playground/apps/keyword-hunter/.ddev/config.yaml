@@ -1,0 +1,13 @@
+name: keyword-hunter
+type: php
+docroot: ""
+php_version: "7.4"
+webserver_type: apache-fpm
+router_http_port: "8080"
+router_https_port: "8443"
+database:
+  type: mariadb
+  version: "10.11"
+xdebug_enabled: false
+no_project_mount: false
+use_dns_when_possible: true

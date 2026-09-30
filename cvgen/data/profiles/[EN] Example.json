@@ -1,0 +1,148 @@
+{
+    "@context": "http://github.com/emircanerkul/cvgen",
+    "@type": "CVGen",
+    "lang": "en",
+    "name": "White",
+    "surname": "Taklaci",
+    "expertise": "Talking Bird",
+    "born": "01.01.2010",
+    "gender": "M",
+    "email": {
+        "detailed": "cikcik@whitetaklaci.com",
+        "important": "career@whitetaklaci.com"
+    },
+    "website": "https://whitetaklaci.com",
+    "linkedin": "https://linkedin.com/in/whitetaklaci",
+    "github": "https://github.com/whitetaklaci",
+    "phone": "+171 171 55 54",
+    "photo": "placeholder.png",
+    "about": {
+        "detailed": "In hac habitasse platea dictumst. Suspendisse vel turpis diam. Sed risus tellus, accumsan non odio in, tristique tempor risus. Mauris id nisi et sapien dictum imperdiet sit amet at sapien. Fusce in purus sodales, ullamcorper nunc eget, dignissim mi. Praesent at eleifend lectus. Quisque cursus arcu eget diam suscipit varius. Morbi ac mauris sed mi facilisis malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin lectus ex, imperdiet a varius eu, lobortis et magna. Nulla pellentesque urna metus, vel euismod eros iaculis sit amet. Mauris efficitur vel sapien at pharetra. Sed rhoncus dictum commodo. Mauris enim orci, consequat posuere nulla id, pharetra rutrum mauris.",
+        "important": "In hac habitasse platea dictumst. Suspendisse vel turpis diam. Sed risus tellus, accumsan non odio in, tristique tempor risus. Mauris id nisi et sapien dictum imperdiet sit amet at sapien. Fusce in purus sodales, ullamcorper nunc eget, dignissim mi"
+    },
+    "education": [
+        {
+            "organization": "Cikcik University",
+            "department": "Spy Engineering",
+            "degree": "Bachelor's Degree",
+            "date_at": "2014",
+            "date_from": "2012"
+        },
+        {
+            "organization": "Cikcik High School",
+            "department": "Talking Department",
+            "degree": "High School",
+            "date_at": "2012",
+            "date_from": "2011",
+            "tag": "detailed"
+        }
+    ],
+    "experience": [
+        {
+            "organization": "Spyci - International Agency",
+            "qualification": "Journalist",
+            "date_at": "January 2016",
+            "date_from": "Now",
+            "excerpt": "Nam erat lacus, bibendum eu fringilla placerat, molestie eget eros. Etiam a consequat sem, at lacinia lectus. Integer fermentum lorem eu leo pretium dignissim"
+        },
+        {
+            "organization": "Cikco - Wheat supply chain",
+            "qualification": "Test Manager",
+            "date_at": "January 2015",
+            "date_from": "January 2016",
+            "excerpt": "I came out of my comfort area and i quit this job because i'm really getting obese.",
+            "tag": "detailed"
+        }
+    ],
+    "certificate": [
+        {
+            "organization": "Cikcik High School",
+            "qualification": "Talking",
+            "excerpt": "Integer fermentum lorem eu leo pretium dignissim",
+            "date_at": "May 2012",
+            "date_from": "Permanent"
+        },
+        {
+            "organization": "Birds Charity Association",
+            "qualification": "Best Volunteer",
+            "excerpt": "Sed mollis odio at leo rutrum sagittis. Donec rutrum, nunc non venenatis pellentesque",
+            "date_at": "October 2013",
+            "date_from": "Permanent",
+            "tag": "detailed"
+        }
+    ],
+    "abilities": [
+        {
+            "ability": "Talking (Your great!)",
+            "level": 9
+        },
+        {
+            "ability": "Working (Some little marketing..)",
+            "level": 9
+        },
+        {
+            "ability": "Flying (Don't write non-important skills or least put detail tag)",
+            "level": 9,
+            "tag": "detailed"
+        },
+        {
+            "ability": "Tumbler (Don't Write non-similar skills or least put detail tag)",
+            "level": 9,
+            "tag": "detailed"
+        },
+        {
+            "ability": "Swimming",
+            "level": 3
+        }
+    ],
+    "projects": [
+        {
+            "title": "Saving birds from cat",
+            "excerpt": "Nullam sagittis blandit turpis, sed iaculis turpis consequat sit amet",
+            "used": "Used, This, One, Metal, Water"
+        },
+        {
+            "title": "Birds feeding center",
+            "excerpt": "Cras luctus sapien id lorem elementum auctor quis ac sapien. Nulla lorem nunc, pellentesque at blandit sit amet, accumsan gravida velit",
+            "used": "Used, This, One, Metal, Water"
+        },
+        {
+            "title": "Birds buildings",
+            "excerpt": "Morbi sed dui sapien. Maecenas feugiat libero ut ornare ornare. Sed pretium pulvinar dolor nec vestibulum. Suspendisse faucibus elit lacus, vel feugiat velit facilisis vel.",
+            "used": "Air, Water, Earth, Wood",
+            "tag": "detailed"
+        }
+    ],
+    "languages": [
+        {
+            "title": "Birdish",
+            "qualification": "Perfect"
+        },
+        {
+            "title": "West Birdish",
+            "qualification": "Perfect"
+        },
+        {
+            "title": "East Birdish",
+            "qualification": "Beginner",
+            "tag": "detailed"
+        }
+    ],
+    "hobbies": [
+        {
+            "title": "Study",
+            "icon": "study",
+            "excerpt": "#LearningOnTheRoad"
+        },
+        {
+            "title": "Drawing",
+            "icon": "pen",
+            "excerpt": "I just draw without thinking"
+        },
+        {
+            "title": "Listening",
+            "icon": "music1",
+            "excerpt": "I just listen music with thinking"
+        }
+    ]
+}

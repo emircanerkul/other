@@ -1,0 +1,17 @@
+{# templates/admin/my-custom-page.html.twig #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title %}Actions{% endblock %}
+
+{% block main %}
+    {{ form_start(form) }}
+       <fieldset class="border p-2">
+            <legend class="float-none w-auto p-2">{{ "Repository Explorer"|trans }}</legend>
+            <div class="input-group mb-3">
+                {{ form_widget(form.field_repository) }}
+                {{ form_widget(form.field_submit_run_repository_explorer_selected) }}
+            </div>
+            {{ form_row(form.field_submit_run_repository_explorer_all) }}
+        </fieldset>
+    {{ form_end(form) }}
+{% endblock %}

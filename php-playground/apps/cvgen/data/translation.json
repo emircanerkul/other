@@ -1,0 +1,23 @@
+{
+    "en": {
+        "personal_profile": "personal profile",
+        "work_experience": "work experience",
+        "key_skills": "key skills",
+        "projects": "projects",
+        "certification": "certification",
+        "languages": "languages",
+        "education": "education",
+        "hobbies": "hobbies"
+
+    },
+    "tr": {
+        "personal_profile": "kişisel profilim",
+        "work_experience": "çalışma deneyimleri",
+        "key_skills": "yeterlilikler",
+        "projects": "projeler",
+        "certification": "sertifikalar",
+        "languages": "yabancı diller",
+        "education": "eğitim",
+        "hobbies": "hobilerim"
+    }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelime Avcısı</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+<body>
+  <div class="container mt-4 pt-4 pb-4">
+    <div class="row mb-4">
+      <div class="col-md-8">
+        <h1>Kelime Avcısı</h1>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-3">
+            <div class="row text-right">
+              <h1>
+                <span id="time" class="badge badge-warning">%TIME%</span>
+              </h1>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="row">
+              Hoşgeldin <b class="ml-1">%NAME% (%SCORE%)</b>
+            </div>
+
+            <div class="row">
+              <a href="./action.php?r=logout">Oturumu Sonlandır</a>
+            </div>
+
+            <div class="row">
+              <a href="./action.php?r=joker">Joker Kullan (<b>%JOKER%</b>)</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <p>%QUESTION%</p>
+    <form action="./" method="POST">
+      <input name="answer" class="w-100 text-center p-2 display-4" type="text" placeholder="%HINT%">
+    </form>
+  </div>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

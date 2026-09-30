@@ -1,0 +1,314 @@
+{
+  "generated": "2026-09-30T13:04:42.517Z",
+  "branchPrefix": "project/",
+  "php_playground_url": "./php-playground/",
+  "counts": {
+    "live": 21,
+    "placeholder": 15,
+    "buildFailed": 0
+  },
+  "apps": [
+    {
+      "slug": "augmented-reality",
+      "title": "Augmented Reality",
+      "branch": "project/augmented-reality",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/augmented-reality",
+      "url": "./augmented-reality/index.html"
+    },
+    {
+      "slug": "bilimsel-hazirlik-not-hesaplama",
+      "title": "Bilimsel Hazırlık Not Hesaplama",
+      "branch": "project/bilimsel-hazirlik-not-hesaplama",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/bilimsel-hazirlik-not-hesaplama",
+      "url": "./bilimsel-hazirlik-not-hesaplama/index.html"
+    },
+    {
+      "slug": "computer-vision-companies",
+      "title": "Computer Vision Companies",
+      "branch": "project/computer-vision-companies",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/computer-vision-companies",
+      "url": "./computer-vision-companies/index.html"
+    },
+    {
+      "slug": "data-visualization",
+      "title": "Data Visualization",
+      "branch": "project/data-visualization",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/data-visualization",
+      "url": "./data-visualization/"
+    },
+    {
+      "slug": "drupal-mind-map",
+      "title": "Drupal Mind Map",
+      "branch": "project/drupal-mind-map",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/drupal-mind-map",
+      "url": "./drupal-mind-map/index.html"
+    },
+    {
+      "slug": "ipd",
+      "title": "IPD",
+      "branch": "project/ipd",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/ipd",
+      "url": "./ipd/index.html"
+    },
+    {
+      "slug": "kisisel-web-sitesi",
+      "title": "Kişisel Web Sitesi",
+      "branch": "project/kisisel-web-sitesi",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/kisisel-web-sitesi",
+      "url": "./kisisel-web-sitesi/index.html"
+    },
+    {
+      "slug": "old-personal-website",
+      "title": "Old Personal Website",
+      "branch": "project/old-personal-website",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/old-personal-website",
+      "url": "./old-personal-website/index.html"
+    },
+    {
+      "slug": "personal-web-page",
+      "title": "Personal Web Page",
+      "branch": "project/personal-web-page",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/personal-web-page",
+      "url": "./personal-web-page/index.html"
+    },
+    {
+      "slug": "qgen-exam-generator",
+      "title": "QGen Exam Generator",
+      "branch": "project/qgen-exam-generator",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/qgen-exam-generator",
+      "url": "./qgen-exam-generator/index.html"
+    },
+    {
+      "slug": "rpg-game-development-adventure",
+      "title": "RPG Game Development Adventure",
+      "branch": "project/rpg-game-development-adventure",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/rpg-game-development-adventure",
+      "url": "./rpg-game-development-adventure/index.html"
+    },
+    {
+      "slug": "threejs-web-design-sample",
+      "title": "Three.js Web Design Sample",
+      "branch": "project/threejs-web-design-sample",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/threejs-web-design-sample",
+      "url": "./threejs-web-design-sample/index.html"
+    },
+    {
+      "slug": "cvgen",
+      "title": "CV Generator",
+      "branch": "project/cvgen",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/cvgen",
+      "url": "./cvgen/index.html",
+      "php": {
+        "kind": "plain",
+        "entry": "index.html"
+      }
+    },
+    {
+      "slug": "domain-checker",
+      "title": "Domain Checker",
+      "branch": "project/domain-checker",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/domain-checker",
+      "url": "./domain-checker/index.html",
+      "php": {
+        "kind": "plain",
+        "entry": "index.html"
+      }
+    },
+    {
+      "slug": "keyword-hunter",
+      "title": "Keyword Hunter",
+      "branch": "project/keyword-hunter",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/keyword-hunter",
+      "url": "./keyword-hunter/index.php",
+      "php": {
+        "kind": "plain",
+        "entry": "index.php"
+      }
+    },
+    {
+      "slug": "ip-logger",
+      "title": "IP Logger",
+      "branch": "project/ip-logger",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/ip-logger",
+      "url": "./ip-logger/index.html",
+      "php": {
+        "kind": "plain",
+        "entry": "dashboard/index.html"
+      }
+    },
+    {
+      "slug": "cool-text",
+      "title": "Cool Text",
+      "branch": "project/cool-text",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/cool-text",
+      "url": "./cool-text/"
+    },
+    {
+      "slug": "elitegamers",
+      "title": "Elitegamers",
+      "branch": "project/elitegamers",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/elitegamers",
+      "url": "./elitegamers/"
+    },
+    {
+      "slug": "stencil-first-step",
+      "title": "Stencil First Step",
+      "branch": "project/stencil-first-step",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/stencil-first-step",
+      "url": "./stencil-first-step/"
+    },
+    {
+      "slug": "angular-quotes-app",
+      "title": "Angular Quotes App",
+      "branch": "project/angular-quotes-app",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/angular-quotes-app",
+      "url": "./angular-quotes-app/"
+    },
+    {
+      "slug": "api-platform-weather-api",
+      "title": "API Platform Weather API",
+      "branch": "project/api-platform-weather-api",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/api-platform-weather-api",
+      "php": {
+        "kind": "symfony",
+        "entry": "public/index.php"
+      }
+    },
+    {
+      "slug": "php-trait-showroom",
+      "title": "PHP Trait Showroom",
+      "branch": "project/php-trait-showroom",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/php-trait-showroom",
+      "php": {
+        "kind": "symfony",
+        "entry": "public/index.php"
+      }
+    },
+    {
+      "slug": "symfony-first-step",
+      "title": "Symfony First Step",
+      "branch": "project/symfony-first-step",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/symfony-first-step",
+      "php": {
+        "kind": "symfony",
+        "entry": "public/index.php"
+      }
+    },
+    {
+      "slug": "drupal-first-step",
+      "title": "Drupal First Step",
+      "branch": "project/drupal-first-step",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/drupal-first-step"
+    },
+    {
+      "slug": "drupal-tome-blog",
+      "title": "Drupal Tome Blog",
+      "branch": "project/drupal-tome-blog",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/drupal-tome-blog"
+    },
+    {
+      "slug": "drupal-design-systems",
+      "title": "Drupal Design Systems",
+      "branch": "project/drupal-design-systems",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/drupal-design-systems"
+    },
+    {
+      "slug": "android-serversocket",
+      "title": "Android Server Socket",
+      "branch": "project/android-serversocket",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/android-serversocket"
+    },
+    {
+      "slug": "drupal-gin-toolbar-extension",
+      "title": "Drupal Gin Toolbar Extension",
+      "branch": "project/drupal-gin-toolbar-extension",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/drupal-gin-toolbar-extension"
+    },
+    {
+      "slug": "drupal-to-md",
+      "title": "Drupal to Markdown",
+      "branch": "project/drupal-to-md",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/drupal-to-md"
+    },
+    {
+      "slug": "foxdot-music-synthesis",
+      "title": "FoxDot Music Synthesis",
+      "branch": "project/foxdot-music-synthesis",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/foxdot-music-synthesis"
+    },
+    {
+      "slug": "gamificate-image",
+      "title": "Gamificate Image",
+      "branch": "project/gamificate-image",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/gamificate-image"
+    },
+    {
+      "slug": "psd-to-html",
+      "title": "PSD to HTML",
+      "branch": "project/psd-to-html",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/psd-to-html"
+    },
+    {
+      "slug": "coolify-aws-sam-app",
+      "title": "Coolify AWS SAM App",
+      "branch": "project/coolify-aws-sam-app",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/coolify-aws-sam-app"
+    },
+    {
+      "slug": "audacious-player",
+      "title": "Audacious Player (Raycast)",
+      "branch": "project/audacious-player",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/audacious-player"
+    },
+    {
+      "slug": "codegrepper",
+      "title": "CodeGrepper",
+      "branch": "project/codegrepper",
+      "status": "placeholder",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/codegrepper"
+    },
+    {
+      "slug": "rust-first-step",
+      "title": "Rust First Step",
+      "branch": "project/rust-first-step",
+      "status": "live",
+      "branchUrl": "https://github.com/emircanerkul/other/tree/project/rust-first-step",
+      "url": "./rust-playground/",
+      "rust": true
+    }
+  ]
+}
