@@ -21,7 +21,7 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "57f50266fbd3e4323c075ac0a87206d6"
+    "revision": "1631241ac30dddc041d9e2c2bb6f155c"
   },
   {
     "url": "abduction.svg",
@@ -344,48 +344,48 @@ self.__precacheManifest = [
     "revision": "2a10d690d8b55d2b9edae6b423561fc9"
   },
   {
-    "url": "assets/js/app.507c1e27.js",
-    "revision": "f8f478c21d35a93a5b26e5ff9977f1f9"
+    "url": "assets/js/app.449a9c48.js",
+    "revision": "638c8aa2c58b05edca1bd69f2de9320e"
   },
   {
     "url": "categories/cloud-gaming/index.html",
-    "revision": "305a502a9fd5d0ae388f24804f8a5e1f"
+    "revision": "7e9a28eed20c65834c5a3c4e3e6694a2"
   },
   {
     "url": "categories/development/index.html",
-    "revision": "2149d293db4f58fde71a726ad5cf8ce4"
+    "revision": "18875ca37048ec3d8e035297cded6172"
   },
   {
     "url": "categories/free-game/index.html",
-    "revision": "0f225edbb09ab695d70aea5c6bc6e7c9"
+    "revision": "a8cbe2c2a4b8f6865fa771bd59edc641"
   },
   {
     "url": "categories/game-development/index.html",
-    "revision": "c0fc6ec9ee8987c0389b05cde93eadca"
+    "revision": "e6a155a9a62c142768ff13f797fefb44"
   },
   {
     "url": "categories/game/index.html",
-    "revision": "a22406c15d67ece6e4d536bcbb622274"
+    "revision": "2ee2455fe0c4f305c6dd8704eca5d21b"
   },
   {
     "url": "categories/index.html",
-    "revision": "4b8230dad62e410cfd81ea902171e55f"
+    "revision": "cdc2276cdaa82362b2992ba96ea4e9e7"
   },
   {
     "url": "categories/learning/index.html",
-    "revision": "64f06415533f90d15deabd8cd0093658"
+    "revision": "8baa3ac94700bdb702b769d5a865d14c"
   },
   {
     "url": "categories/news/index.html",
-    "revision": "2ae8cd82900f3bfd0d8aed66b42ef85b"
+    "revision": "f29920e44c36260acc998c1e5bf8787e"
   },
   {
     "url": "categories/technology/index.html",
-    "revision": "7085a76a5a69b0472a63ff709ff3eda4"
+    "revision": "297a59874b1fbe80d2de8182f3752b49"
   },
   {
     "url": "contact/index.html",
-    "revision": "0d23f289bea5f3d61cddd1705345a96d"
+    "revision": "bad3f7111dd7e48ece96cddcf9a32c53"
   },
   {
     "url": "elite-gamer-logo.png",
@@ -517,155 +517,155 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "27be2109a38b031e99e04de2c5b2e283"
+    "revision": "6a4a8206d147123b21fb07b83f5f62dc"
   },
   {
     "url": "posts/a-new-trailer-has-arrived-from-hogwarts-legacy-showing-dragons-giant-spiders-and-more/index.html",
-    "revision": "c717b9db91a1f9b8631a8cee3a476f3f"
+    "revision": "c6d96aa623058f4370a39892938365d7"
   },
   {
     "url": "posts/amazon-prime-gaming-is-starting-off-the-new-year-with-a-bang/index.html",
-    "revision": "a606ee7ec9d41ad5ea6c58bc7e459227"
+    "revision": "45d1cefbccc3a74736bc50de645f2872"
   },
   {
     "url": "posts/call-of-duty-vanguard-confession-months-after-activision/index.html",
-    "revision": "f16aac63845c2098014f18de709de702"
+    "revision": "8e437ad11675869d4a7a4f1f3f172fc1"
   },
   {
     "url": "posts/cloud-gaming/index.html",
-    "revision": "cae48a9e96760fb8aa47b4b41e56472b"
+    "revision": "d4687119cb0bc44f450a319dae82d45b"
   },
   {
     "url": "posts/december-free-game-news/index.html",
-    "revision": "5d9afc6438819c00316b97cfb6039355"
+    "revision": "44364682dc13aa41d59b99f0bf032716"
   },
   {
     "url": "posts/endless-games-you-wont-be-able-to-put-down-for-hundreds-of-hours/index.html",
-    "revision": "c09f8790d48d6be0b8f09d2a994cf173"
+    "revision": "ed2ddf66b2cf94e943e38e328279f6b7"
   },
   {
     "url": "posts/epic-games-acquires-rock-band-developer-harmonix/index.html",
-    "revision": "a34b6a53359e20acc8327b08abad4569"
+    "revision": "e2ebb736ace8a7e3ceea16b51058e08a"
   },
   {
     "url": "posts/epic-games-gives-free-games-daily/index.html",
-    "revision": "da7b39fd6a6944f18e1a7eda379b64bf"
+    "revision": "52d95eb580b853420a089d07c263bb09"
   },
   {
     "url": "posts/fifa-broke-with-ea-it-will-improve-its-own-game/index.html",
-    "revision": "31bb8179d94f468f48b65472b8649956"
+    "revision": "091ab77be4eadfc81f4961094a9751a6"
   },
   {
     "url": "posts/final-fantasy-16-s-producer-s-statement-that-will-anger-fans-if-you-re-going-to-play-the-game-buy-a-ps5/index.html",
-    "revision": "a14d90c3ad93fc8e3bf974d84a7c2abd"
+    "revision": "7ebeee8e2315cb9f16a6c1b15f89b604"
   },
   {
     "url": "posts/free-dead-space-2-deal-from-ea/index.html",
-    "revision": "59aef26e7a5e1381999b29c44d7876fd"
+    "revision": "4ddbe517267ecb869ec38fb76ad2ff93"
   },
   {
     "url": "posts/game-development/index.html",
-    "revision": "2218b96036f78222ffde54a5eb4acf38"
+    "revision": "3496d589cb59ab6f7a343640b89270ec"
   },
   {
     "url": "posts/geforce-now-library-is-expanding-8-new-games-added-to-the-list/index.html",
-    "revision": "a5441f289759730522d9b3dac8040f0c"
+    "revision": "e37261e52dba32abe9801dda3a8046f5"
   },
   {
     "url": "posts/good-news-for-lord-of-the-rings-fans-from-electronic-arts/index.html",
-    "revision": "18b3242f3a74a8799286ef00e2407071"
+    "revision": "ba770c84d57571b8bd74c78bca0eb154"
   },
   {
     "url": "posts/grand-opening/index.html",
-    "revision": "13b3a5c2e51c69195bcaec9d2248bb75"
+    "revision": "6526370fbb58a8716e0f4a0b52896cf8"
   },
   {
     "url": "posts/gta-trilogy-criticized/index.html",
-    "revision": "039235ec1e638892988c1761c0a8f752"
+    "revision": "2d83942a4931eabe79cfd31f8de67f02"
   },
   {
     "url": "posts/hogwarts-legacy-becomes-the-best-selling-game-on-steam-before-its-release/index.html",
-    "revision": "af7cf9c54c94b6483451414cd30cbf18"
+    "revision": "9e51c1f9dd4d5359bcae0a83e9539f3c"
   },
   {
     "url": "posts/index.html",
-    "revision": "a9b1df1f22242a0f1d7da3e8a96717bc"
+    "revision": "dd0696460e6f7699f2d325334823f6be"
   },
   {
     "url": "posts/msi-is-unhappy-with-nvidias-pricing-it-recommends-the-4070-ti-instead-of-the-4080/index.html",
-    "revision": "30419915a8e5ed9416c10ad1d37797ee"
+    "revision": "32241315a372e049d30f6d6236970599"
   },
   {
     "url": "posts/netease-is-not-sleeping-now-it-has-acquired-skybox-labs-the-co-developer-of-halo-infinite/index.html",
-    "revision": "104ccd56ad1d6d5928d15ded2740a563"
+    "revision": "4c9faf1cc69b65e4b78d1518339ee46b"
   },
   {
     "url": "posts/new-gameplay-video-of-skull-and-bones-has-been-released/index.html",
-    "revision": "b86a049bdb51ba4cba743b9e8276a1fe"
+    "revision": "dd8ba4bb46138f85eea934294747aa97"
   },
   {
     "url": "posts/new-mafia-game-is-coming/index.html",
-    "revision": "613fc954e2aea681512fc0bf0716fdbf"
+    "revision": "3a4379711112b3176c37a91af75f4678"
   },
   {
     "url": "posts/november-free-game-news/index.html",
-    "revision": "971c6c77ce52e48be172e39a80ed0f71"
+    "revision": "bca0b5348f0d77fe34c21542fbdcb177"
   },
   {
     "url": "posts/playstation-plus-will-reduce-the-game-quality/index.html",
-    "revision": "1d6b45589dc6da4a5cbc74979cc2ab90"
+    "revision": "99a3c7a094ba82395fb4a3e109c197c0"
   },
   {
     "url": "posts/prime-gaming-free-game-news/index.html",
-    "revision": "e20b1f2d599b0ed10ad7fb3f032b066b"
+    "revision": "286fa26cc46a9afecceefb3ded56c677"
   },
   {
     "url": "posts/riot-games-will-add-new-content-to-league-of-legends-in-2023/index.html",
-    "revision": "01956cfe1c4352091e424d8ffb2ca13b"
+    "revision": "a442b92c25ab5e95e4b0de1bac1f340e"
   },
   {
     "url": "posts/sony-announced-23-games-that-will-be-available-for-playstation-users-in-2023/index.html",
-    "revision": "df5d769ce3adc9375b29447520a100a8"
+    "revision": "0a1ce552f80e0b0fb53677e2c7c50994"
   },
   {
     "url": "posts/sony-has-shared-the-first-images-of-the-gran-turismo-movie/index.html",
-    "revision": "27804c229430cd23592909d403e43eb0"
+    "revision": "1eb551925318529a92ce9de8c97dd358"
   },
   {
     "url": "posts/starfields-steam-page-opened/index.html",
-    "revision": "7240f7cc7dd1afc898749ed056f0c20c"
+    "revision": "696fc767a74544064af1fe97511eda11"
   },
   {
     "url": "posts/the-all-time-concurrent-user-record-for-steam-has-been-broken/index.html",
-    "revision": "65805947145b18daf1a7c836155e13d9"
+    "revision": "a9911b38552b516fbda33ec425b071fc"
   },
   {
     "url": "posts/the-game-awards-2021/index.html",
-    "revision": "eddc3bfcfb2f22bd21264542201a9cc6"
+    "revision": "10da058b9d4d80e85912798226ff2fb0"
   },
   {
     "url": "posts/the-games-that-will-be-added-to-xbox-game-pass-in-january-have-been-announced/index.html",
-    "revision": "9f029f257515dcc4d25133b3e8a58a4f"
+    "revision": "ad246dc14f7c020ab40f2a7d5cfaa918"
   },
   {
     "url": "posts/the-most-sold-games-on-steam/index.html",
-    "revision": "da3c25a8b8f5cd7182bf438297b7ce68"
+    "revision": "dab0a144b86f03f1a205e9f52818a181"
   },
   {
     "url": "posts/this-weeks-free-games-from-epic-games/index.html",
-    "revision": "82fd5fc663e310f28bf8d6ab769057a3"
+    "revision": "8fbef25cc3b1952f253807f33310d9bc"
   },
   {
     "url": "posts/tomb-raider-series-are-free/index.html",
-    "revision": "fd8ca8d5601907f791bbc250b539e0c5"
+    "revision": "9f5c56b36110bc98ca060037b430d031"
   },
   {
     "url": "posts/ubisofts-confusing-splinter-cell-remake-share/index.html",
-    "revision": "85c4a70524362ec2d82dcfe7aec5eba4"
+    "revision": "788f0e091ed7bb6515df02fddb308535"
   },
   {
     "url": "privacy-policy/index.html",
-    "revision": "4b706fc5d10bca264412a6ef1cfd7d1a"
+    "revision": "f3a3774f23bc29449705f5e05a5e9bf7"
   },
   {
     "url": "watermark-logo.png",
